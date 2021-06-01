@@ -26,7 +26,7 @@ const App = () => {
     </SafeAreaProvider>
   );
 };
-
+// style
 const styles = StyleSheet.create({
 
 });
