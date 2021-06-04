@@ -18,6 +18,8 @@ export const back = require("../assets/icons/back.png");
 export const home = require("../assets/icons/Home.png");
 export const user = require("../assets/icons/User.png");
 export const contactanos = require("../assets/images/contactanos.png");
+export const comprobantes= require("../assets/icons/comprobantes.png");
+export const documentPdf = require("../assets/icons/pdf.png");
 
 export default {
     camera,
@@ -40,4 +42,6 @@ export default {
     home,
     user,
     contactanos,
+    comprobantes,
+    documentPdf,
 }

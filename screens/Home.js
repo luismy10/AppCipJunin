@@ -103,7 +103,7 @@ class Home extends React.Component {
                   </View>
                   {/* Eventos */} 
                   <View style={{ height: SIZES.height * 0.25, backgroundColor: COLORS.white}}>
-                    <View style={{ flex: 1,  backgroundColor: '#BABABA'}}>
+                    <View style={{ flex: 1,  backgroundColor: '#BABABA', borderBottomLeftRadius:20, borderBottomRightRadius:20}}>
                       <View style={{ marginHorizontal: SIZES.padding }}>
                         <View style={{marginTop:20,flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                           <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Eventos</Text>

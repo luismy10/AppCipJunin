@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Image, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS, icons } from '../constants';
-import { Home,Favourite,Search,ListPlant,Camera,Perfil,Contactenos } from '../screens';
+import { Home,ListPlant,Camera,Perfil,Contactenos,Comprobantes } from '../screens';
 const Tab = createBottomTabNavigator();
 
 const CameraButton = () => {
@@ -47,8 +47,8 @@ const Tabs = () => {
                                     height: 22
                                 }} />
                         );
-                        case "Box": return (<Image
-                            source={icons.cube}
+                        case "Comprobantes": return (<Image
+                            source={icons.comprobantes}
                             resizeMode='contain'
                             style={{
                                 tintColor: tintColor,
@@ -80,8 +80,8 @@ const Tabs = () => {
                 component={Home}>
             </Tab.Screen>
             <Tab.Screen
-                name="Box"
-                component={ListPlant}>
+                name="Comprobantes"
+                component={Comprobantes}>
             </Tab.Screen>
             <Tab.Screen
                 name="Camera"

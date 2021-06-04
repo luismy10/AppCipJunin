@@ -20,23 +20,33 @@ export default class SplashScreen extends React.Component {
     return (
       <View style={css.container}>
         <ImageBackground source={images.fondo} style={css.image}>
-          <View style={{backgroundColor: 'transparent', alignItems: 'center',marginBottom:10}}>
-            <Image source={images.logoCIP} style={{ width: 140, height: 140,}} />
-          </View>
-          <View>
-            <Text style={{...FONTS.text_splash}}>C.I.P. JUNIN</Text>
-          </View>
+          <SafeAreaView style={{ flex: 1 }}>
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                alignItems: 'center',
+                marginBottom: 10,
+              }}>
+              <Image
+                source={images.logoCIP}
+                style={{ width: 140, height: 140 }}
+              />
+            </View>
+            <View>
+              <Text style={{ ...FONTS.text_splash }}>C.I.P. JUNIN</Text>
+            </View>
+          </SafeAreaView>
         </ImageBackground>
       </View>
     );
   }
 }
 
-const css = StyleSheet.create({ 
+const css = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    flexDirection: "column"
+    flexDirection: 'column',
   },
   image: {
     flex: 1,

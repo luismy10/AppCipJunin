@@ -33,6 +33,7 @@ export const revista1 = require("../assets/images/revista1.png");
 export const revista2 = require("../assets/images/revista2.png");
 export const revista3 = require("../assets/images/revista3.png");
 export const avatar = require("../assets/images/Avatar.png");
+export const colegio = require("../assets/images/colegio.png");
 
 
 export default {
@@ -71,4 +72,5 @@ export default {
     revista2,
     revista3,
     avatar,
+    colegio,
 }
