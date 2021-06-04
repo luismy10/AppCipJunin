@@ -15,6 +15,9 @@ export const seed = require("../assets/icons/seed.png");
 export const chevron = require("../assets/icons/chevron.png");
 export const downArrow = require("../assets/icons/down-arrow.png");
 export const back = require("../assets/icons/back.png");
+export const home = require("../assets/icons/Home.png");
+export const user = require("../assets/icons/User.png");
+export const contactanos = require("../assets/images/contactanos.png");
 
 export default {
     camera,
@@ -33,5 +36,8 @@ export default {
     seed,
     chevron,
     downArrow,
-    back
+    back,
+    home,
+    user,
+    contactanos,
 }

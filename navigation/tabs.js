@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Image, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS, icons } from '../constants';
-import { Home,Favourite,Search,ListPlant,Camera } from '../screens';
+import { Home,Favourite,Search,ListPlant,Camera,Perfil,Contactenos } from '../screens';
 const Tab = createBottomTabNavigator();
 
 const CameraButton = () => {
@@ -39,7 +39,7 @@ const Tabs = () => {
                     switch (route.name) {
                         case "Home": return (
                             <Image
-                                source={icons.flash}
+                                source={icons.home}
                                 resizeMode='contain'
                                 style={{
                                     tintColor: tintColor,
@@ -56,16 +56,16 @@ const Tabs = () => {
                                 height: 22
                             }} />);
                         case "Camera":return <CameraButton />;
-                        case "Search": return (<Image
-                            source={icons.search}
+                        case "Contactenos": return (<Image
+                            source={icons.contactanos}
                             resizeMode='contain'
                             style={{
                                 tintColor: tintColor,
                                 width: 22,
                                 height: 22
                             }} />);
-                        case "Favourite": return (<Image
-                            source={icons.heart}
+                        case "Perfil": return (<Image
+                            source={icons.user}
                             resizeMode='contain'
                             style={{
                                 tintColor: tintColor,
@@ -88,12 +88,12 @@ const Tabs = () => {
                 component={Camera}>
             </Tab.Screen>
             <Tab.Screen
-                name="Search"
-                component={Search}>
+                name="Contactenos"
+                component={Contactenos}>
             </Tab.Screen>
             <Tab.Screen
-                name="Favourite"
-                component={Favourite}>
+                name="Perfil"
+                component={Perfil}>
             </Tab.Screen>
         </Tab.Navigator>
     );

@@ -1,0 +1,46 @@
+import React from 'react';
+import {
+  StyleSheet,
+  SafeAreaView,
+  ImageBackground,
+  TextInput,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import { images, COLORS, FONTS, SIZES } from '../constants';
+
+export default class SplashScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={css.container}>
+        <ImageBackground source={images.fondo} style={css.image}>
+          <View style={{backgroundColor: 'transparent', alignItems: 'center',marginBottom:10}}>
+            <Image source={images.logoCIP} style={{ width: 140, height: 140,}} />
+          </View>
+          <View>
+            <Text style={{...FONTS.text_splash}}>C.I.P. JUNIN</Text>
+          </View>
+        </ImageBackground>
+      </View>
+    );
+  }
+}
+
+const css = StyleSheet.create({ 
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    flexDirection: "column"
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+});

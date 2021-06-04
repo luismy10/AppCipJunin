@@ -1,76 +1,101 @@
-
-import React, { Component } from 'react';
+import React from 'react';
 import {
-    StyleSheet,
-    SafeAreaView,
-    View,
-    Text,
-    Image,
-    TouchableOpacity
+  StyleSheet,
+  SafeAreaView,
+  ImageBackground,
+  TextInput,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { images, COLORS, FONTS, SIZES } from '../constants';
+export default class Login extends React.Component {
 
-export default class Login extends Component {
-
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      isVisiblePassword:false
     }
+  }
 
-    render() {
-        return (
-            <SafeAreaView style={styles.container}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Image
-                        source={images.onboardingImage}
-                        resizeMode="contain"
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                        }}
-                    />
-                </View>
+  _isVisiblePassword =()=>{    
+    this.setState({isVisiblePassword:!this.state.isVisiblePassword})
+  }
 
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={{ alignItems: 'center', marginHorizontal: SIZES.padding }}>
-                        <Text style={{ ...FONTS.h2 }}>Digital Ticket</Text>
-                        <Text style={{ color: COLORS.gray, marginTop: SIZES.padding, textAlign: 'center', ...FONTS.body3 }}>Easy solution to buy tickets for your travel, business trips, transportation, lodging and culinary.</Text>
-                    </View>
+  render() {
+    return (    
+      <View style={css.container}>
+        <ImageBackground source={images.fondoLogin} style={css.image}>
+          <View style={{alignItems:'center', paddingTop:'25%', paddingBottom:15}}>
+            <Image source={images.logoCIPColor} style={{width:120, height:120}} />
+          </View> 
+          <View>
+            <Text style={{...FONTS.text_tittle}}>COLEGIO DE INGENIEROS DEL PERÚ</Text>
+          </View>
+          <View style={{paddingHorizontal:20, paddingTop:100}}>
+            <TextInput style={css.input} placeholder="Ingrese Número CIP o Dni" fkeyboardType="numeric"/>
+          </View>
+          <View style={{paddingHorizontal:20, paddingTop:15}}>
+            <TextInput style={css.input} placeholder="Ingrese Su Contraseña" secureTextEntry={!this.state.isVisiblePassword}/>
+            <TouchableOpacity style={{ position:'absolute', right:45, top:40}} onPress={()=>this._isVisiblePassword()}>
+              <Image source={this.state.isVisiblePassword? images.eyesUnlock:images.eyesLock} style={{width:20, height:20,}}/>
+            </TouchableOpacity>
+          </View>
+          <View style={css.buttonAceptar}>
+            <TouchableOpacity style={{borderBottomLeftRadius:10,borderTopRightRadius:10,backgroundColor:'#EB2F2F',paddingVertical:8,paddingHorizontal:30}}>
+              <Text style={{...FONTS.h4,color:COLORS.white}}>INGRESAR</Text>
+            </TouchableOpacity>
+          </View >
+          <View style={{alignItems:'center', paddingTop:20, }}>
+            <Text style={{textDecorationLine: 'underline'}}>¿Olvido su contraseña?</Text>
+          </View>
 
-                    <TouchableOpacity
-                    style={[styles.shadow, { marginTop: SIZES.padding * 2, width: '70%', height: 50, alignItems: 'center', justifyContent: 'center' }]}
-                    onPress={() => this.props.navigation.navigate("Home")}
-                >
-                    <LinearGradient
-                        style={{ height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 15 }}
-                        colors={['#46aeff', '#5884ff']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                    >
-                        <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Start !</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-                </View>
-            </SafeAreaView>
-        );
-    }
+          <View style={{position: 'absolute', left: 0, right: 0, bottom: 30, flexDirection:'row'}}>
+
+            <View style={{width:'50%',alignItems:'center'}}>             
+              <View style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                <Image source={images.phoneIcon} style={{width:12, height:12,marginHorizontal:10,resizeMode:'stretch'}}/>
+                <Text style={{fontWeight:'bold'}}>Contactenos</Text>
+              </View>
+            </View>
+
+            <View style={{width:'50%', alignItems:'center'}}>              
+              <View style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+                <Image source={images.placeIcon} style={{width:12, height:12,marginHorizontal:10,resizeMode:'stretch'}}/>
+                <Text style={{fontWeight:'bold'}}>Ubicanos</Text>
+              </View>
+            </View>
+            
+          </View>
+
+        </ImageBackground>
+      </View>    
+    );
+  }
 }
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-    },
-    shadow: {
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-    }
+const css = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    flexDirection: 'column',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',    
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderBottomWidth: 2,
+    borderBottomColor: '#C1BFBF',
+    paddingLeft:10,
+  },
+    buttonAceptar:{
+    paddingTop:15, 
+    width:'', 
+    alignItems: 'center', 
+    justifyContent:'center',
+  }
 });

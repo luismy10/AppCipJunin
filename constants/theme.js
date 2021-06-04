@@ -3,7 +3,7 @@ const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
     // base colors
-    primary: "#00996D", // Green
+    primary: "#EB2F2F", // Green
     secondary: "#606d87",   // Gray
 
     // colors
@@ -44,6 +44,9 @@ export const FONTS = {
     body2: { fontFamily: "Roboto-Regular", fontSize: SIZES.body2, lineHeight: 30 },
     body3: { fontFamily: "Roboto-Regular", fontSize: SIZES.body3, lineHeight: 22 },
     body4: { fontFamily: "Roboto-Regular", fontSize: SIZES.body4, lineHeight: 22 },
+    text_splash:{fontFamily: "Roboto-Black", color: 'white', fontWeight: 'bold', textAlign: 'center', border:'black', textShadowOffset: {width: -1, height: 3}, textShadowRadius: 10, borderColor: "black" },
+    text_tittle:{textAlign:'center',fontFamily:'Arial Black', fontWeight:'bold'},
+    text_Name:{fontFamily:'Arial-Black', fontWeight:'bold', fontSize:20}
 };
 
 const appTheme = { COLORS, SIZES, FONTS };

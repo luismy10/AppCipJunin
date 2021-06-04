@@ -1,12 +1,14 @@
 import React from 'react';
-import { View,Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 
-const Camera = ()=>{
-    return (<View>
+const Camera = () => {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View>
         <Text>Camera</Text>
-    </View>)
-}
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default Camera;
-
-
