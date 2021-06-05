@@ -6,7 +6,6 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  Linking,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
@@ -16,27 +15,29 @@ class Ingresos extends React.Component {
 
   constructor(props) {
     super(props);
-    
+
   }
 
-  componentDidMount(){    
+  componentDidMount() {
     this.props.navigation.setOptions({
       title: 'Estados de Cuenta',
-              headerStyle: {
-                backgroundColor: COLORS.primary,
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-              headerLeft: () => (
-                <TouchableOpacity
-                  onPress={() => this.props.navigation.goBack()} style={{flexDirection:'row'}}>
-                  <Image source={icons.back} style={{width:20, height:15}}/>
-                  <Text style={{color:COLORS.white}}>Regresar</Text>
-                </TouchableOpacity>
-              ),
-    }); 
+      headerStyle: {
+        backgroundColor: COLORS.primary,
+      },
+      headerTintColor: COLORS.white,
+      headerTitleStyle: {
+        ...FONTS.h4,
+        fontWeight: 'bold',
+        textAlign: 'center'
+      },
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => this.props.navigation.goBack()} style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image source={icons.back} style={{ width: 20, height: 20, tintColor: COLORS.white }} />
+          <Text style={{ ...FONTS.h4, color: COLORS.white }}>Regresar</Text>
+        </TouchableOpacity>
+      ),
+    });
   }
 
   render() {

@@ -1,9 +1,10 @@
+import SplashScreen from './SplashScreen';
+import Login from './Login';
 import Home from './Home';
-import PlantDetail from './PlantDetail';
 import Perfil from './Perfil';
+import Ingresos from './Ingresos';
 import Comprobantes from './Comprobantes';
 import Contactenos from './Contactenos'; 
-import ListPlant from './ListPlant'; 
-import Camera from './Camera'; 
+import Credenciales from './Credenciales'; 
 
-export {Home,PlantDetail,Perfil,Contactenos,ListPlant,Camera,Comprobantes};
+export {SplashScreen,Login,Home,Perfil,Contactenos,Comprobantes,Credenciales,Ingresos};

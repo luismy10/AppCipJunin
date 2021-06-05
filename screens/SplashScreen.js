@@ -20,7 +20,7 @@ export default class SplashScreen extends React.Component {
     return (
       <View style={css.container}>
         <ImageBackground source={images.fondo} style={css.image}>
-          <SafeAreaView style={{ flex: 1 }}>
+          <SafeAreaView style={{ flex: 1,justifyContent:'center',alignItems:'center' }}>
             <View
               style={{
                 backgroundColor: 'transparent',

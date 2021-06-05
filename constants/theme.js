@@ -45,6 +45,8 @@ export const FONTS = {
   h2: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 30 },
   h3: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h3, lineHeight: 22 },
   h4: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 22 },
+  italic: { fontFamily: 'Roboto-Italic', fontSize: SIZES.h4, lineHeight: 22 },
+  italicBold: { fontFamily: 'Roboto-BoldItalic', fontSize: SIZES.h4, lineHeight: 22 },
   body1: {
     fontFamily: 'Roboto-Regular',
     fontSize: SIZES.body1,
@@ -80,7 +82,7 @@ export const FONTS = {
     fontFamily: 'Arial Black',
     fontWeight: 'bold',
   },
-  text_Name: { fontFamily: 'Arial-Black', fontWeight: 'bold', fontSize: 20 },
+  text_Name: { fontFamily: 'Roboto-Black', fontWeight: 'bold', fontSize: 19, lineHeight: 22 },
 };
 
 const appTheme = { COLORS, SIZES, FONTS };

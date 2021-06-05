@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView,Image,ImageBackground } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { StyleSheet, View, Text, StatusBar, ScrollView,Image,ImageBackground,SafeAreaView } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, images } from '../constants';
 
 class Perfil extends React.Component {
@@ -89,7 +88,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    top: 20,
+    paddingVertical:20,
+    paddingHorizontal:10
   },
   image_avatar: {
     backgroundColor: COLORS.lightGray,

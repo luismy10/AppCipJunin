@@ -1,4 +1,4 @@
-package com.appcipjunin;
+package com.planappexploration;
 
 import android.app.Application;
 

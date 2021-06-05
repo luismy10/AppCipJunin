@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Image, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS, icons } from '../constants';
-import { Home,ListPlant,Camera,Perfil,Contactenos,Comprobantes } from '../screens';
+import { Home,Perfil,Contactenos,Comprobantes } from '../screens';
 const Tab = createBottomTabNavigator();
 
 const CameraButton = () => {
@@ -82,11 +82,7 @@ const Tabs = () => {
             <Tab.Screen
                 name="Comprobantes"
                 component={Comprobantes}>
-            </Tab.Screen>
-            <Tab.Screen
-                name="Camera"
-                component={Camera}>
-            </Tab.Screen>
+            </Tab.Screen>          
             <Tab.Screen
                 name="Contactenos"
                 component={Contactenos}>

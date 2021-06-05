@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* AppCipJuninTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppCipJuninTests.m */; };
+		00E356F31AD99517003FC87E /* PlanAppExplorationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PlanAppExplorationTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,7 +15,25 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* AppCipJuninTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AppCipJuninTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* PlanAppExplorationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PlanAppExplorationTests.m */; };
+		749680472D7E4FB39E43D452 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A158C24F98402281A49D57 /* Roboto-Black.ttf */; };
+		1B32E6B9EF7B4142AFA44636 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C1489F7C91F45A4A431445C /* Roboto-BlackItalic.ttf */; };
+		1A56FCB0ACE34F20BA9ACDCC /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF75C19036CF4BA3B19AFD4A /* Roboto-Bold.ttf */; };
+		58BACA18D2B145CE898C37B7 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D2EC0C62042E5B9B55FDF /* Roboto-BoldItalic.ttf */; };
+		B9DDC999B719475896BCB3CE /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06D5DBA59614DC8B6DB59E1 /* Roboto-Italic.ttf */; };
+		84424E3B8E6545B19A2E6D93 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2486976B552C4375AF8E3FA4 /* Roboto-Light.ttf */; };
+		8D7E3E946C2943F5B2169C91 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0DC74A9282B4D15935E46FE /* Roboto-LightItalic.ttf */; };
+		A80E92F5F3E94FB9BB96210B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B95A870D126145A3AE805F8E /* Roboto-Medium.ttf */; };
+		D9D0D2F5F1004CEB8AB07297 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E66D1D3B013C45D1A2216137 /* Roboto-MediumItalic.ttf */; };
+		471E10861ED344FE829123D4 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BA849A59927432D8AE16572 /* Roboto-Regular.ttf */; };
+		BE37B1ABF9ED4B1B92E23A71 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5622EA2652F74234AA102712 /* Roboto-Thin.ttf */; };
+		566DCD75705C4F31B4EA6B2E /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3FDC3EE1D5D42A286BC1D32 /* Roboto-ThinItalic.ttf */; };
+		0CDDCD913680401F928479CB /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86740B86229C4643BC97B564 /* RobotoCondensed-Bold.ttf */; };
+		51BF73422EBB4E84B7AF66BC /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32240887DDE9480D998694A6 /* RobotoCondensed-BoldItalic.ttf */; };
+		DA6E772A900240EA818CFFEA /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 106C069024134EACB57E9330 /* RobotoCondensed-Italic.ttf */; };
+		10DD8FE8304343208AA66703 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B27341B721784381AF5DFF91 /* RobotoCondensed-Light.ttf */; };
+		C4D7A7B99B534B51B28BB194 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D637F2659DC948A9AF12460D /* RobotoCondensed-LightItalic.ttf */; };
+		1EA2584508F34512A92159EA /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA9125B9D6244807AB281EE7 /* RobotoCondensed-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,33 +42,51 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = AppCipJunin;
+			remoteInfo = PlanAppExploration;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "AppCipJunin-tvOS";
+			remoteInfo = "PlanAppExploration-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* AppCipJuninTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppCipJuninTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* PlanAppExplorationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanAppExplorationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* AppCipJuninTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppCipJuninTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* AppCipJunin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppCipJunin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppCipJunin/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppCipJunin/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* PlanAppExplorationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanAppExplorationTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* PlanAppExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanAppExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PlanAppExploration/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PlanAppExploration/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AppCipJunin/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppCipJunin/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AppCipJunin/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* AppCipJunin-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppCipJunin-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* AppCipJunin-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppCipJunin-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PlanAppExploration/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlanAppExploration/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PlanAppExploration/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* PlanAppExploration-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PlanAppExploration-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* PlanAppExploration-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlanAppExploration-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		70A158C24F98402281A49D57 /* Roboto-Black.ttf */ = {isa = PBXFileReference; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0C1489F7C91F45A4A431445C /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FF75C19036CF4BA3B19AFD4A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2A8D2EC0C62042E5B9B55FDF /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D06D5DBA59614DC8B6DB59E1 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2486976B552C4375AF8E3FA4 /* Roboto-Light.ttf */ = {isa = PBXFileReference; name = "Roboto-Light.ttf"; path = "../assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D0DC74A9282B4D15935E46FE /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B95A870D126145A3AE805F8E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E66D1D3B013C45D1A2216137 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1BA849A59927432D8AE16572 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5622EA2652F74234AA102712 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3FDC3EE1D5D42A286BC1D32 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		86740B86229C4643BC97B564 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Bold.ttf"; path = "../assets/fonts/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		32240887DDE9480D998694A6 /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-BoldItalic.ttf"; path = "../assets/fonts/RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		106C069024134EACB57E9330 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Italic.ttf"; path = "../assets/fonts/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B27341B721784381AF5DFF91 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D637F2659DC948A9AF12460D /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/fonts/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AA9125B9D6244807AB281EE7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,13 +121,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* AppCipJuninTests */ = {
+		00E356EF1AD99517003FC87E /* PlanAppExplorationTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* AppCipJuninTests.m */,
+				00E356F21AD99517003FC87E /* PlanAppExplorationTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = AppCipJuninTests;
+			path = PlanAppExplorationTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -102,7 +138,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* AppCipJunin */ = {
+		13B07FAE1A68108700A75B9A /* PlanAppExploration */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -113,7 +149,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = AppCipJunin;
+			name = PlanAppExploration;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -135,11 +171,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* AppCipJunin */,
+				13B07FAE1A68108700A75B9A /* PlanAppExploration */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* AppCipJuninTests */,
+				00E356EF1AD99517003FC87E /* PlanAppExplorationTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				A0A268E30CAB41719FFBC634 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,20 +186,46 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* AppCipJunin.app */,
-				00E356EE1AD99517003FC87E /* AppCipJuninTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* AppCipJunin-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* AppCipJunin-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* PlanAppExploration.app */,
+				00E356EE1AD99517003FC87E /* PlanAppExplorationTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* PlanAppExploration-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* PlanAppExploration-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A0A268E30CAB41719FFBC634 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				70A158C24F98402281A49D57 /* Roboto-Black.ttf */,
+				0C1489F7C91F45A4A431445C /* Roboto-BlackItalic.ttf */,
+				FF75C19036CF4BA3B19AFD4A /* Roboto-Bold.ttf */,
+				2A8D2EC0C62042E5B9B55FDF /* Roboto-BoldItalic.ttf */,
+				D06D5DBA59614DC8B6DB59E1 /* Roboto-Italic.ttf */,
+				2486976B552C4375AF8E3FA4 /* Roboto-Light.ttf */,
+				D0DC74A9282B4D15935E46FE /* Roboto-LightItalic.ttf */,
+				B95A870D126145A3AE805F8E /* Roboto-Medium.ttf */,
+				E66D1D3B013C45D1A2216137 /* Roboto-MediumItalic.ttf */,
+				1BA849A59927432D8AE16572 /* Roboto-Regular.ttf */,
+				5622EA2652F74234AA102712 /* Roboto-Thin.ttf */,
+				D3FDC3EE1D5D42A286BC1D32 /* Roboto-ThinItalic.ttf */,
+				86740B86229C4643BC97B564 /* RobotoCondensed-Bold.ttf */,
+				32240887DDE9480D998694A6 /* RobotoCondensed-BoldItalic.ttf */,
+				106C069024134EACB57E9330 /* RobotoCondensed-Italic.ttf */,
+				B27341B721784381AF5DFF91 /* RobotoCondensed-Light.ttf */,
+				D637F2659DC948A9AF12460D /* RobotoCondensed-LightItalic.ttf */,
+				AA9125B9D6244807AB281EE7 /* RobotoCondensed-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* AppCipJuninTests */ = {
+		00E356ED1AD99517003FC87E /* PlanAppExplorationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppCipJuninTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PlanAppExplorationTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -173,14 +236,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = AppCipJuninTests;
-			productName = AppCipJuninTests;
-			productReference = 00E356EE1AD99517003FC87E /* AppCipJuninTests.xctest */;
+			name = PlanAppExplorationTests;
+			productName = PlanAppExplorationTests;
+			productReference = 00E356EE1AD99517003FC87E /* PlanAppExplorationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* AppCipJunin */ = {
+		13B07F861A680F5B00A75B9A /* PlanAppExploration */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppCipJunin" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PlanAppExploration" */;
 			buildPhases = (
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -192,14 +255,14 @@
 			);
 			dependencies = (
 			);
-			name = AppCipJunin;
-			productName = "AppCipJunin";
-			productReference = 13B07F961A680F5B00A75B9A /* AppCipJunin.app */;
+			name = PlanAppExploration;
+			productName = "PlanAppExploration";
+			productReference = 13B07F961A680F5B00A75B9A /* PlanAppExploration.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* AppCipJunin-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* PlanAppExploration-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppCipJunin-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlanAppExploration-tvOS" */;
 			buildPhases = (
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
@@ -211,14 +274,14 @@
 			);
 			dependencies = (
 			);
-			name = "AppCipJunin-tvOS";
-			productName = "AppCipJunin-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* AppCipJunin-tvOS.app */;
+			name = "PlanAppExploration-tvOS";
+			productName = "PlanAppExploration-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* PlanAppExploration-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* AppCipJunin-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* PlanAppExploration-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppCipJunin-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlanAppExploration-tvOSTests" */;
 			buildPhases = (
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
@@ -229,9 +292,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "AppCipJunin-tvOSTests";
-			productName = "AppCipJunin-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* AppCipJunin-tvOSTests.xctest */;
+			name = "PlanAppExploration-tvOSTests";
+			productName = "PlanAppExploration-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* PlanAppExploration-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +303,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -258,7 +321,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppCipJunin" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PlanAppExploration" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -271,10 +334,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* AppCipJunin */,
-				00E356ED1AD99517003FC87E /* AppCipJuninTests */,
-				2D02E47A1E0B4A5D006451C7 /* AppCipJunin-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* AppCipJunin-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* PlanAppExploration */,
+				00E356ED1AD99517003FC87E /* PlanAppExplorationTests */,
+				2D02E47A1E0B4A5D006451C7 /* PlanAppExploration-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* PlanAppExploration-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,6 +356,24 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				749680472D7E4FB39E43D452 /* Roboto-Black.ttf in Resources */,
+				1B32E6B9EF7B4142AFA44636 /* Roboto-BlackItalic.ttf in Resources */,
+				1A56FCB0ACE34F20BA9ACDCC /* Roboto-Bold.ttf in Resources */,
+				58BACA18D2B145CE898C37B7 /* Roboto-BoldItalic.ttf in Resources */,
+				B9DDC999B719475896BCB3CE /* Roboto-Italic.ttf in Resources */,
+				84424E3B8E6545B19A2E6D93 /* Roboto-Light.ttf in Resources */,
+				8D7E3E946C2943F5B2169C91 /* Roboto-LightItalic.ttf in Resources */,
+				A80E92F5F3E94FB9BB96210B /* Roboto-Medium.ttf in Resources */,
+				D9D0D2F5F1004CEB8AB07297 /* Roboto-MediumItalic.ttf in Resources */,
+				471E10861ED344FE829123D4 /* Roboto-Regular.ttf in Resources */,
+				BE37B1ABF9ED4B1B92E23A71 /* Roboto-Thin.ttf in Resources */,
+				566DCD75705C4F31B4EA6B2E /* Roboto-ThinItalic.ttf in Resources */,
+				0CDDCD913680401F928479CB /* RobotoCondensed-Bold.ttf in Resources */,
+				51BF73422EBB4E84B7AF66BC /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				DA6E772A900240EA818CFFEA /* RobotoCondensed-Italic.ttf in Resources */,
+				10DD8FE8304343208AA66703 /* RobotoCondensed-Light.ttf in Resources */,
+				C4D7A7B99B534B51B28BB194 /* RobotoCondensed-LightItalic.ttf in Resources */,
+				1EA2584508F34512A92159EA /* RobotoCondensed-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* AppCipJuninTests.m in Sources */,
+				00E356F31AD99517003FC87E /* PlanAppExplorationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* AppCipJuninTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* PlanAppExplorationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,12 +503,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* AppCipJunin */;
+			target = 13B07F861A680F5B00A75B9A /* PlanAppExploration */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* AppCipJunin-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* PlanAppExploration-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -439,7 +520,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = AppCipJunin;
+			path = PlanAppExploration;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -453,7 +534,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AppCipJuninTests/Info.plist;
+				INFOPLIST_FILE = PlanAppExplorationTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -463,7 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCipJunin.app/AppCipJunin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanAppExploration.app/PlanAppExploration";
 			};
 			name = Debug;
 		};
@@ -472,7 +553,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = AppCipJuninTests/Info.plist;
+				INFOPLIST_FILE = PlanAppExplorationTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -482,7 +563,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCipJunin.app/AppCipJunin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanAppExploration.app/PlanAppExploration";
 			};
 			name = Release;
 		};
@@ -492,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = AppCipJunin/Info.plist;
+				INFOPLIST_FILE = PlanAppExploration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -500,7 +581,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AppCipJunin;
+				PRODUCT_NAME = PlanAppExploration;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -510,7 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = AppCipJunin/Info.plist;
+				INFOPLIST_FILE = PlanAppExploration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -518,7 +599,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AppCipJunin;
+				PRODUCT_NAME = PlanAppExploration;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -535,14 +616,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppCipJunin-tvOS/Info.plist";
+				INFOPLIST_FILE = "PlanAppExploration-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AppCipJunin-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PlanAppExploration-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -562,14 +643,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppCipJunin-tvOS/Info.plist";
+				INFOPLIST_FILE = "PlanAppExploration-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AppCipJunin-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PlanAppExploration-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -588,17 +669,17 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppCipJunin-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "PlanAppExploration-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AppCipJunin-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PlanAppExploration-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCipJunin-tvOS.app/AppCipJunin-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanAppExploration-tvOS.app/PlanAppExploration-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -614,17 +695,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AppCipJunin-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "PlanAppExploration-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AppCipJunin-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PlanAppExploration-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppCipJunin-tvOS.app/AppCipJunin-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlanAppExploration-tvOS.app/PlanAppExploration-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -731,7 +812,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AppCipJuninTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PlanAppExplorationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -740,7 +821,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AppCipJunin" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PlanAppExploration" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -749,7 +830,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppCipJunin-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlanAppExploration-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -758,7 +839,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AppCipJunin-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlanAppExploration-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -767,7 +848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AppCipJunin" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PlanAppExploration" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
