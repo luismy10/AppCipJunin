@@ -6,50 +6,60 @@ class Comprobantes extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
         <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
 
-        <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'center', backgroundColor: COLORS.lightGray }} showsVerticalScrollIndicator={false}>
-          <View style={styles.container}>
-
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Ingresos')}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Image source={icons.search} style={{ width: 20, height: 20, resizeMode: 'stretch', marginRight: 10 }} />
-                  <Text style={{ ...FONTS.h3, color: COLORS.black }}>Est. Cuentas</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Image source={icons.search} style={{ width: 20, height: 20, resizeMode: 'stretch', marginRight: 10 }} />
-                  <Text style={{ ...FONTS.h3, color: COLORS.black }}>Cert. Habilidad</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Image source={icons.search} style={{ width: 20, height: 20, resizeMode: 'stretch', marginRight: 10 }} />
-                  <Text style={{ ...FONTS.h3, color: COLORS.black }}>Cert. Obra</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Image source={icons.search} style={{ width: 20, height: 20, resizeMode: 'stretch', marginRight: 10 }} />
-                  <Text style={{ ...FONTS.h3, color: COLORS.black }}>Cert. Proyecto</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-
+        <View style={styles.contenedorTitulo}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image
+              source={icons.comprobantes}
+              resizeMode='contain'
+              style={{ width: 24, height: 24, tintColor: COLORS.black }} />
+            <Text style={{ ...FONTS.h3, marginLeft: 5 }}>
+              Consultar Documentos
+            </Text>
           </View>
-        </ScrollView>
+        </View>
+
+        <View style={styles.container}>
+
+          <View style={styles.box}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EstadoCuenta')}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image source={icons.search} style={styles.icon} />
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Est. Cuentas</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.box}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image source={icons.search} style={styles.icon} />
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Habilidad</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.box}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image source={icons.search} style={styles.icon} />
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Obra</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.box}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Image source={icons.search} style={styles.icon} />
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Proyecto</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+        </View>
 
       </SafeAreaView>
     );
@@ -62,7 +72,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20
+    paddingVertical: 20,
+
+  },
+  contenedorTitulo: {
+    backgroundColor: COLORS.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    justifyContent: 'space-between'
   },
   box: {
     minWidth: '70%',
@@ -71,7 +90,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: COLORS.white,
+    borderColor: COLORS.gray,
     borderWidth: 1,
     shadowColor: "#000",
     shadowOffset: { width: -1, height: 5, },
@@ -80,6 +99,13 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginBottom: 20,
   },
+  icon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'stretch',
+    marginRight: 10,
+    tintColor: COLORS.primary
+  }
 });
 
 export default Comprobantes;

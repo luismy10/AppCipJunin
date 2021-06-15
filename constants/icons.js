@@ -18,8 +18,26 @@ export const back = require("../assets/icons/back.png");
 export const home = require("../assets/icons/Home.png");
 export const user = require("../assets/icons/User.png");
 export const contactanos = require("../assets/images/contactanos.png");
-export const comprobantes= require("../assets/icons/comprobantes.png");
+export const comprobantes = require("../assets/icons/comprobantes.png");
 export const documentPdf = require("../assets/icons/pdf.png");
+export const email = require("../assets/icons/email.png");
+export const domain = require("../assets/icons/domain.png");
+export const maps = require("../assets/icons/maps.png");
+export const time = require("../assets/icons/time.png");
+export const phone = require("../assets/icons/phone.png");
+export const company = require("../assets/icons/company.png");
+export const statementAccounts = require("../assets/icons/statement-accounts.png");
+export const error = require("../assets/icons/error.png");
+export const information = require("../assets/icons/information.png");
+export const warning = require("../assets/icons/warning.png");
+export const ok = require("../assets/icons/ok.png");
+export const turnoff = require("../assets/icons/turnoff.png");
+export const calendar = require("../assets/icons/calendar.png");
+export const moneyBag = require("../assets/icons/money_bag.png");
+export const reload = require("../assets/icons/reload.png");
+export const briefcase = require("../assets/icons/briefcase.png");
+export const services = require("../assets/icons/services.png");
+export const cip = require("../assets/icons/cip.png");
 
 export default {
     camera,
@@ -44,4 +62,22 @@ export default {
     contactanos,
     comprobantes,
     documentPdf,
+    email,
+    domain,
+    phone,
+    maps,
+    time,
+    company,
+    statementAccounts,
+    error,
+    warning,
+    information,
+    ok,
+    turnoff,
+    calendar,
+    moneyBag,
+    reload,
+    briefcase,
+    services,
+    cip
 }

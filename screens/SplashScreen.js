@@ -3,11 +3,9 @@ import {
   StyleSheet,
   SafeAreaView,
   ImageBackground,
-  TextInput,
   View,
   Text,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import { images, COLORS, FONTS, SIZES } from '../constants';
 

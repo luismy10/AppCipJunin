@@ -4,14 +4,16 @@ const { width, height } = Dimensions.get('window');
 export const COLORS = {
   // base colors
   primary: '#EB2F2F', // Green
-  secondary: '#606d87', // Gray
+  secondary: '#020203', // Gray
 
   // colors
   black: '#1E1F20',
   white: '#FFFFFF',
   lightGray: '#eff2f5',
-  gray: '#BEC1D2',
+  gray: '#6c757d',
+  grayDark: '#343a40',
   blue: '#01a0e0',
+  yellow: '#E09B07'
 };
 export const SIZES = {
   // global sizes
@@ -22,15 +24,10 @@ export const SIZES = {
 
   // font sizes
   largeTitle: 50,
-  h1: 30,
-  h2: 22,
-  h3: 16,
-  h4: 14,
-  body1: 30,
-  body2: 22,
-  body3: 16,
-  body4: 14,
-
+  h1: 27,
+  h2: 19,
+  h3: 17,
+  h4: 15,
   // app dimensions
   width,
   height,
@@ -41,48 +38,48 @@ export const FONTS = {
     fontSize: SIZES.largeTitle,
     lineHeight: 55,
   },
-  h1: { fontFamily: 'Roboto-Black', fontSize: SIZES.h1, lineHeight: 36 },
-  h2: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 30 },
+  h1: { fontFamily: 'Roboto-Black', fontSize: SIZES.h1, lineHeight: 30 },
+  h2: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 26 },
   h3: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h3, lineHeight: 22 },
   h4: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 22 },
+  p: { fontFamily: 'Roboto-Regular', fontSize: SIZES.h4, lineHeight: 22 },
   italic: { fontFamily: 'Roboto-Italic', fontSize: SIZES.h4, lineHeight: 22 },
   italicBold: { fontFamily: 'Roboto-BoldItalic', fontSize: SIZES.h4, lineHeight: 22 },
   body1: {
     fontFamily: 'Roboto-Regular',
-    fontSize: SIZES.body1,
+    fontSize: SIZES.h1,
     lineHeight: 36,
   },
   body2: {
     fontFamily: 'Roboto-Regular',
-    fontSize: SIZES.body2,
+    fontSize: SIZES.h2,
     lineHeight: 30,
   },
   body3: {
     fontFamily: 'Roboto-Regular',
-    fontSize: SIZES.body3,
+    fontSize: SIZES.h3,
     lineHeight: 22,
   },
   body4: {
     fontFamily: 'Roboto-Regular',
-    fontSize: SIZES.body4,
+    fontSize: SIZES.h4,
     lineHeight: 22,
   },
   text_splash: {
     fontFamily: 'Roboto-Black',
+    fontSize: SIZES.h1,
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    border: 'black',
     textShadowOffset: { width: -1, height: 3 },
     textShadowRadius: 10,
     borderColor: 'black',
   },
   text_tittle: {
     textAlign: 'center',
-    fontFamily: 'Arial Black',
+    fontFamily: 'Roboto-Black',
     fontWeight: 'bold',
   },
-  text_Name: { fontFamily: 'Roboto-Black', fontWeight: 'bold', fontSize: 19, lineHeight: 22 },
 };
 
 const appTheme = { COLORS, SIZES, FONTS };

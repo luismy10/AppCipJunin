@@ -1,94 +1,169 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, Linking, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, images } from '../constants';
+import { connect } from 'react-redux';
 
 class Contactenos extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.props.navigation.setOptions({
+      title: 'Contáctenos',
+      headerStyle: {
+        backgroundColor: COLORS.primary,
+      },
+      headerTintColor: COLORS.white,
+      headerTitleAlign: 'center',
+      headerTitleStyle: {
+        ...FONTS.h3,
+        fontWeight: 'bold',
+        textAlignVertical: 'center',
+        flex: 1,
+      },
+    });
+  }
+
+  onEventCloseSession = async () => {
+    try {
+      await SecureStorage.removeItem('user');
+      this.props.removeToken();
+    } catch (e) {
+      this.props.removeToken();
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.primary }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
         <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
-        <ScrollView style={{ flex: 1, backgroundColor: COLORS.lightGray }} showsVerticalScrollIndicator={false}>
+
+        <View style={styles.contenedorTitulo}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Image
+              source={icons.contactanos}
+              resizeMode='contain'
+              style={{ width: 24, height: 24, tintColor: COLORS.black }} />
+            <Text style={{ ...FONTS.h3, marginLeft: 5 }}>
+              Directorio Institucional
+            </Text>
+          </View>
+        </View>
+
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
 
-            <View style={{ paddingBottom: 20, width: '100%', height: SIZES.height * 0.25 }}>
-              <Image source={images.colegio} style={{width:'100%'}} />
+            <View style={{ padding: 20, alignItems: 'center' }}>
+              <Image source={images.logoCIPColor} style={{ width: 120, height: 120 }} />
             </View>
 
-            <View style={{ backgroundColor: COLORS.white, white: SIZES * 0.8, margin: 20, borderRadius: 20 }}>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Razón Social: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>Colegio de Ingenieros del Perú - Consejo departamental Junín</Text>
-                </View>
-              </View>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>R.U.C.: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>12345678925</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.plus}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>R.U.C.:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>20191899963</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Correo Mesa Parte: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>mesadepartes.cn@cip.org.pe</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.company}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Razón Social:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Colegio de Ingenieros del Perú - Consejo departamental Junín</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Horario de atención: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text style={{ color: COLORS.primary, fontWeight: 'bold' }}>De lunes a viernes de 09:00 a.m. a 06:00 p.m.</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.email}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Correo Electrónico:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>secretaria@cip-junin.org.pe</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Dirección: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>Av. Arequipa Nº 4947, Miraflores, Lima – Perú</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.time}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Horario de atención:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>De lunes a viernes de 09:00 a.m. a 06:00 p.m.</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Correo Mesa Parte: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>mesadepartes.cn@cip.org.pe</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.maps}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Dirección:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>AV. CENTENARIO NRO. 604 (COSTADO DE LA IGLESIA PICHICUS) JUNIN - HUANCAYO - HUANCAYO</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Celular Mesa Parte: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text onPress={() => { Linking.openURL('tel:+51 939357540'); }} style={{ fontWeight: 'bold' }}>(+51) 939357540</Text>
+
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.phone}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Celular/Teléfono:</Text>
                 </View>
               </View>
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>(064) - 203033</Text>
+              </View>
+            </View>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 10 }}>
-                <View style={{ width: '50%' }}>
-                  <Text>Pagina Web: </Text>
-                </View>
-                <View style={{ width: '50%' }}>
-                  <Text>www.cipjunin.com.pe</Text>
+            <View style={styles.itemContenedor}>
+              <View style={styles.itemDetalle}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.domain}
+                    resizeMode='contain'
+                    style={styles.itemIcon} />
+                  <Text style={{ ...FONTS.h4, color: COLORS.black }}>Pagina Web:</Text>
                 </View>
               </View>
-
+              <View style={styles.itemDetalle}>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>www.cip-junin.org.pe</Text>
+              </View>
             </View>
 
           </View>
@@ -105,8 +180,36 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingVertical: 20
   },
+  contenedorTitulo: {
+    backgroundColor: COLORS.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    justifyContent: 'space-between'
+  },
+  itemContenedor: {
+    width: '100%',
+    flexDirection: 'row'
+  },
+  itemDetalle: {
+    width: '50%',
+    padding: 10
+  },
+  itemIcon: {
+    tintColor: COLORS.secondary,
+    marginHorizontal: 5,
+    width: 18,
+    height: 18
+  }
 });
 
-export default Contactenos;
+const mapStateToProps = (state) => {
+  return {
+    token: state.personaReducer
+  }
+}
+
+export default connect(mapStateToProps)(Contactenos);
 
 

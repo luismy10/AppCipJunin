@@ -8,40 +8,41 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import { images, COLORS, FONTS, SIZES, icons } from '../constants';
-export default class Login extends React.Component {
+import { connect } from 'react-redux';
+
+class Credenciales extends React.Component {
 
   constructor(props) {
     super(props);
 
-  }
-
-  componentDidMount() {
     this.props.navigation.setOptions({
       title: 'Solicitar Credenciales',
       headerStyle: {
         backgroundColor: COLORS.primary,
       },
       headerTintColor: COLORS.white,
+      headerTitleAlign: 'center',
       headerTitleStyle: {
-        ...FONTS.h4,
+        ...FONTS.h3,
         fontWeight: 'bold',
-        textAlign: 'center'
-      },
-      headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => this.props.navigation.goBack()} style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={icons.back} style={{ width: 20, height: 20, tintColor: COLORS.white }} />
-          <Text style={{ ...FONTS.h4, color: COLORS.white }}>Regresar</Text>
-        </TouchableOpacity>
-      ),
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        flex: 1,
+      }
     });
+  }
+
+  componentDidMount() {
+
   }
 
   render() {
     return (
       <View style={css.container}>
+        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
         <ImageBackground source={images.fondoLogin} style={css.image}>
           <ScrollView>
 
@@ -61,7 +62,7 @@ export default class Login extends React.Component {
               <View>
                 <Text style={{ ...FONTS.text_tittle, marginBottom: 60 }}>
                   COLEGIO DE INGENIEROS DEL PERÚ
-                  </Text>
+                </Text>
               </View>
 
               <View style={{ paddingHorizontal: 20, }}>
@@ -76,8 +77,8 @@ export default class Login extends React.Component {
               </View>
 
               <View style={{ width: '100%', alignItems: 'center', padding: 30 }}>
-                <Text style={{ fontWeight: 'bold', textAlign: 'center' }}>Las credenciales serán enviadas a su correo institucional, en caso de no contar comuníquese con el área de informática que lo puede visualizar </Text>
-                <View><TouchableOpacity style={{}}><Text style={{ color: COLORS.blue, borderBottomColor: COLORS.blue, borderBottomWidth: 1 }}>aquí.</Text></TouchableOpacity></View>
+                <Text style={{ fontWeight: 'bold', textAlign: 'center' }}>Las credenciales serán enviadas a su correo institucional, en caso de no contar comuníquese con el área de informática que lo puede visualizar en contáctenos.</Text>
+                {/* <View><TouchableOpacity style={{}}><Text style={{ color: COLORS.blue, borderBottomColor: COLORS.blue, borderBottomWidth: 1 }}>aquí.</Text></TouchableOpacity></View> */}
               </View>
             </View>
           </ScrollView>
@@ -113,3 +114,12 @@ const css = StyleSheet.create({
     borderBottomLeftRadius: 10, borderTopRightRadius: 10, backgroundColor: '#EB2F2F', paddingVertical: 8, paddingHorizontal: 30
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.personaReducer
+  }
+}
+
+
+export default connect(mapStateToProps)(Credenciales);
