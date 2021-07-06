@@ -21,13 +21,15 @@ const EXT_PRO = ".php";
 
 const EXT_DEV = "";
 
-export const LOGIN_PERSONA = DOMINIO_DEV + "api/login" + EXT_DEV;
+const EXT = EXT_PRO;
 
-export const INGRESOS_PERSONA = DOMINIO_DEV + "api/ingresos" + EXT_DEV;
+export const LOGIN_PERSONA = DOMINIO_PRO + "api/login" + EXT;
 
-export const INFORMACION_PERSONA = DOMINIO_DEV + "api/informacion" + EXT_DEV;
+export const INGRESOS_PERSONA = DOMINIO_PRO + "api/ingresos" + EXT;
 
-export const PERFIL_PERSONA = DOMINIO_DEV + "api/perfil" + EXT_DEV;
+export const INFORMACION_PERSONA = DOMINIO_PRO + "api/informacion" + EXT;
+
+export const PERFIL_PERSONA = DOMINIO_PRO + "api/perfil" + EXT;
 
 export default {
   /**

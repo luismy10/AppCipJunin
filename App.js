@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Login, Credenciales, EstadoCuenta, Contactenos, SplashScreen } from './screens';
+import { Login, Credenciales, EstadoCuenta, Contactenos, SplashScreen, CrediCars } from './screens';
 import { images, COLORS, FONTS, SIZES, URL, icons } from './constants';
 import Tabs from './navigation/tabs';
 import SecureStorage from 'react-native-secure-storage';
@@ -75,4 +75,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+//export default CrediCars;
 
