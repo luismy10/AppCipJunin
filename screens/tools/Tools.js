@@ -11,6 +11,14 @@ export function formatMoney(amount, decimalCount = 2, decimal = ".", thousands =
     }
 }
 
+export function nombreMes(mes) {
+    let array = [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    return array[mes - 1];
+}
+
 export function filterWhole(event) {
     var key = window.Event ? event.which : event.keyCode;
     var c = String.fromCharCode(key);

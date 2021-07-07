@@ -1,6 +1,5 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import { CrediCars } from './screens'
 import App from './App';
 import { name as appName } from './app.json';
 import { Provider } from 'react-redux';
@@ -14,4 +13,4 @@ const ReduxComponent = () => (
     </Provider>
 );
 
-AppRegistry.registerComponent(appName, () => CrediCars);
+AppRegistry.registerComponent(appName, () => ReduxComponent);

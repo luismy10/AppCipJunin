@@ -9,6 +9,10 @@ class Servicios extends React.Component {
         super(props);
     }
 
+    onEventPagoCuota = () => {
+        this.props.navigation.navigate('PagoCuota')
+    }
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
@@ -30,34 +34,28 @@ class Servicios extends React.Component {
                     <View style={styles.container}>
 
                         <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                            <View style={styles.box}>
-                                <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                    <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
-                                    <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Pagar Cuota Sociales</Text>
-                                </TouchableOpacity>
-                            </View>
 
-                            <View style={styles.box}>
-                                <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                    <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
-                                    <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Habilidad</Text>
-                                </TouchableOpacity>
-                            </View>
+                            <TouchableOpacity style={styles.box} onPress={this.onEventPagoCuota}>
+                                <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
+                                <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Pagar Cuota Sociales</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.box}>
+                                <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
+                                <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Habilidad</Text>
+                            </TouchableOpacity>
 
 
-                            <View style={styles.box}>
-                                <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                    <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
-                                    <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Obra</Text>
-                                </TouchableOpacity>
-                            </View>
+                            <TouchableOpacity style={styles.box}>
+                                <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
+                                <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Obra</Text>
+                            </TouchableOpacity>
 
-                            <View style={styles.box}>
-                                <TouchableOpacity style={{ flexDirection: 'column', alignItems: 'center' }}>
-                                    <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
-                                    <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Proyecto</Text>
-                                </TouchableOpacity>
-                            </View>
+                            <TouchableOpacity style={styles.box}>
+                                <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />
+                                <Text style={{ ...FONTS.h4, color: COLORS.secondary, textAlign: 'center' }}>Cert. de Proyecto</Text>
+                            </TouchableOpacity>
+
                         </View>
 
                     </View>
@@ -72,6 +70,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingVertical: 20
     },
     contenedorTitulo: {

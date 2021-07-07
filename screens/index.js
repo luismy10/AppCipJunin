@@ -8,5 +8,6 @@ import Contactenos from './Contactenos';
 import Credenciales from './Credenciales';
 import Servicios from './Servicios';
 import CrediCars from './CrediCars';
+import PagoCuota from './PagoCuota';
 
-export { Login, Home, Perfil, Contactenos, Comprobantes, Credenciales, EstadoCuenta, SplashScreen, Servicios, CrediCars };
+export { Login, Home, Perfil, Contactenos, Comprobantes, Credenciales, EstadoCuenta, SplashScreen, Servicios, CrediCars, PagoCuota };

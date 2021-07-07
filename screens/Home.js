@@ -91,6 +91,9 @@ class Home extends React.Component {
         },
         body: JSON.stringify({
           "idDni": this.state.token.idDNI,
+          "mes": 0,
+          "yearCurrentView": "",
+          "monthCurrentView": ""
         })
       });
       let result = await response.json();
@@ -187,7 +190,7 @@ class Home extends React.Component {
 
                     <View style={{ marginVertical: 5, paddingHorizontal: 20 }}>
                       <Text style={{ ...FONTS.h4, }}>Su Condición : {this.state.condicion}</Text>
-                      {/* <Text style={{ ...FONTS.h4, color: COLORS.gray, }}>{this.state.cumplirTreinta <= 0 ? '30 años cumplidos' : (this.state.cumplirTreinta + ' años para ser Vitalicio')} </Text> */}
+                      <Text style={{ ...FONTS.h4, color: COLORS.gray, }}>{this.state.cumplirTreinta <= 0 ? '30 años cumplidos' : (this.state.cumplirTreinta + ' años para ser Vitalicio')} </Text>
                     </View>
 
                     {/* END DATOS DEL INGENIERO */}

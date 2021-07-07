@@ -38,6 +38,10 @@ export const reload = require("../assets/icons/reload.png");
 export const briefcase = require("../assets/icons/briefcase.png");
 export const services = require("../assets/icons/services.png");
 export const cip = require("../assets/icons/cip.png");
+export const pay = require("../assets/icons/pay.png");
+export const checked = require("../assets/icons/checked.png");
+export const check = require("../assets/icons/check.png");
+export const minus = require("../assets/icons/minus.png");
 
 export default {
     camera,
@@ -79,5 +83,9 @@ export default {
     reload,
     briefcase,
     services,
-    cip
+    cip,
+    pay,
+    checked,
+    check,
+    minus
 }

@@ -13,7 +13,8 @@ export const COLORS = {
   gray: '#6c757d',
   grayDark: '#343a40',
   blue: '#01a0e0',
-  yellow: '#E09B07'
+  yellow: '#E09B07',
+  green: "#61ab5e"
 };
 export const SIZES = {
   // global sizes
