@@ -6,7 +6,7 @@ const DOMINIO_PRO = "http://cipjunin.sytes.net/WebCipJunin/app/";
 /**
  * DOMINIO PARA PRUEBAS
  */
-const DOMINIO_PRU = "http://192.168.0.100/WebCipJunin/app/";
+const DOMINIO_PRU = "http://192.168.0.102/WebCipJunin/app/";
 
 /**
  * DOMINIO PARA DESARROLLO
@@ -34,6 +34,8 @@ export const INFORMACION_PERSONA = DOMINIO + "api/informacion" + EXT;
 export const PERFIL_PERSONA = DOMINIO + "api/perfil" + EXT;
 
 export const PAGOS_CUOTAS = DOMINIO + "api/cuotas" + EXT;
+
+export const REGISTRAR_PAGO = DOMINIO + "api/culqi/payment" + EXT;
 
 export default {
   /**
@@ -81,5 +83,6 @@ export default {
       })
   */
   PERFIL_PERSONA,
-  PAGOS_CUOTAS
+  PAGOS_CUOTAS,
+  REGISTRAR_PAGO
 }

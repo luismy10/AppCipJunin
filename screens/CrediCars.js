@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, TouchableOpacity, SafeAreaView, KeyboardAvoidingView } from 'react-native';
-import { COLORS, SIZES, icons, FONTS, images } from '../constants';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, TouchableOpacity, SafeAreaView, Alert, ActivityIndicator } from 'react-native';
+import { COLORS, SIZES, icons, FONTS, URL } from '../constants';
+import { formatMoney, nombreMes } from "./tools/Tools";
 import { connect } from 'react-redux';
 import { CreditCardInput } from "react-native-credit-card-input";
-
 
 class CrediCars extends React.Component {
 
@@ -15,24 +15,28 @@ class CrediCars extends React.Component {
             isVisibleExpiry: false,
             isVisibleCvc: false,
             isVisibleName: false,
-            isCompletePay: false
+            isCompletePay: false,
+            isFocus: false,
+            isLoading: false,
+            montoTotal: 0,
+            cuotasInicio: "",
+            cuotasFin: ""
         }
-        // this.props.navigation.setOptions({
-        //     title: 'Contáctenos',
-        //     headerStyle: {
-        //         backgroundColor: COLORS.primary,
-        //     },
-        //     headerTintColor: COLORS.white,
-        //     headerTitleAlign: 'center',
-        //     headerTitleStyle: {
-        //         ...FONTS.h3,
-        //         fontWeight: 'bold',
-        //         textAlignVertical: 'center',
-        //         flex: 1,
-        //     },
-        // });
+        this.props.navigation.setOptions({
+            title: 'Registrar Tarjeta',
+            headerStyle: {
+                backgroundColor: COLORS.primary,
+            },
+            headerTintColor: COLORS.white,
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+                ...FONTS.h3,
+                fontWeight: 'bold',
+                textAlignVertical: 'center',
+                flex: 1,
+            },
+        });
     }
-
 
     componentDidMount() {
 
@@ -63,40 +67,80 @@ class CrediCars extends React.Component {
             } else if (this.state.isVisibleCvc && card.status.cvc == "valid") {
                 this.setState({ isVisibleNumber: false, isVisibleExpiry: false, isVisibleCvc: false, isCompletePay: false, isVisibleName: true });
             } else if (this.state.isVisibleName && card.status.name == "valid") {
-                this.setState({ isVisibleNumber: false, isVisibleExpiry: false, isVisibleCvc: false, isVisibleName: false, isCompletePay: true });
+                let data = this.props.route.params.cuotas;
+                let monto = 0;
+                for (item of data) {
+                    for (let c of item.concepto) {
+                        monto += parseFloat(c.Precio);
+                    }
+                }
+                let montoTotal = 0;
+                montoTotal += parseFloat(monto);
+
+                let porcetaje = 4.20 / 100; //0.042
+                let montoAum =
+                    montoTotal > 0 && montoTotal <= 50 ?
+                        montoTotal + 0.5 :
+                        montoTotal > 50 && montoTotal <= 100 ?
+                            montoTotal + 1 :
+                            montoTotal > 100 && montoTotal <= 500 ?
+                                montoTotal + 1.50 :
+                                montoTotal > 500 && montoTotal <= 1000 ?
+                                    montoTotal + 2 :
+                                    montoTotal + 3;
+                let igvp = 18;
+                let comision = montoAum * porcetaje; //4.20
+                let igv = comision * (igvp / 100); //0.756
+                let total = Math.round(montoAum + comision + igv);
+
+                let cuotasInicio = data[0].year + "-" + data[0].mes + "-" + data[0].day;
+                let cuotasFin = data[data.length - 1].year + "-" + data[data.length - 1].mes + "-" + data[data.length - 1].day;
+
+                this.setState({
+                    isVisibleNumber: false,
+                    isVisibleExpiry: false,
+                    isVisibleCvc: false,
+                    isVisibleName: false,
+                    isCompletePay: true,
+                    montoTotal: total,
+                    cuotasInicio: cuotasInicio,
+                    cuotasFin: cuotasFin
+                });
+            } else {
+                if (this.state.isVisibleNumber) {
+                    Alert.alert("Información", "El número de tarjeta no es correcto.");
+                } else if (this.state.isVisibleExpiry) {
+                    Alert.alert("Información", "La fecha de experación no es correcta.");
+                } else if (this.state.isVisibleCvc) {
+                    Alert.alert("Información", "El CVC/CCV no es correcto.");
+                } else {
+                    Alert.alert("Información", "Ingrese el titular de la tarjeta.");
+                }
             }
+        } else {
+            Alert.alert("Información", "Ingrese el número de tarjeta.");
         }
     }
 
-    onValidateCard = () => {
+    async onValidateCard() {
         if (this.state.dataCredicars != null) {
             let card = this.state.dataCredicars;
-            console.warn(card)
+            if (card.valid) {
+                var array = card.values.expiry.split("/");
+                this.props.navigation.navigate('ConfirmarPago',
+                    {
+                        "card_number": card.values.number.replace(/ /g, ""),
+                        "cvv": card.values.cvc,
+                        "expiration_month": array[0],
+                        "expiration_year": array[1],
+                        "email": "roco10@hotmail.com",
+                        "monto": formatMoney(this.state.montoTotal),
+                        "cuotas": this.props.route.params.cuotas,
+                        "cuotasInicio": this.state.cuotasInicio,
+                        "cuotasFin": this.state.cuotasFin
+                    });
+            }
         }
-        // console.warn(this.state.dataCredicars.valid);
-        // console.warn(this.state.dataCredicars.values);
-        // console.warn(this.state.dataCredicars.status);
-
-
-
-
-        // fetch('http://cipjunin.sytes.net/webCipJunin/app/api/login.php', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         "usuario": "5252",
-        //         "clave": "5252"
-        //     })
-        // }).then((response) => {
-        //     return response.json();
-        // }).then((result) => {
-        //     console.warn(result);
-        // }).catch((error) => {
-        //     console.warn(error);
-        // });
     }
 
     render() {
@@ -104,9 +148,8 @@ class CrediCars extends React.Component {
             <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
                 <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
 
-
                 <View style={styles.contenedorTitulo}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                         <Image
                             source={icons.pay}
                             resizeMode='contain'
@@ -115,7 +158,22 @@ class CrediCars extends React.Component {
                             Realizar Pago
                         </Text>
                     </View>
+                    <View>
+                        <Text style={{ ...FONTS.h3 }}>S/ {this.props.route.params.monto}</Text>
+                    </View>
                 </View>
+                {
+                    this.state.isLoading ?
+                        <View style={{ position: 'absolute', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', alignItems: 'center', left: 0, top: 0, zIndex: 20 }}>
+                            <View style={{ backgroundColor: 'white', width: '50%' }}>
+                                <View style={{ padding: 10, alignItems: 'center' }}>
+                                    <ActivityIndicator size="large" color={COLORS.primary} />
+                                    <Text style={{ ...FONTS.h3, color: COLORS.secondary, textAlign: 'center' }}>Procesando Transacción..</Text>
+                                </View>
+                            </View>
+                        </View>
+                        : null
+                }
 
 
                 <View style={{ flex: 1, paddingVertical: 10, }}>
@@ -143,19 +201,24 @@ class CrediCars extends React.Component {
                             }}
                             onChange={(data) => { this.setState({ dataCredicars: data }) }}
                         />
+                        <View style={{
+                            paddingVertical: 10,
+                            paddingHorizontal: 20,
+                            alignItems: 'center'
+                        }}>
+                            <Text style={{ ...FONTS.h3, color: COLORS.secondary, textAlign: 'center' }}>SE LE VA COBRAR UN CARGO ADICIONAL AL MONTO TOTAL POR TRANSACCIÓN.</Text>
+                        </View>
                     </ScrollView>
                 </View>
                 {
                     this.state.isCompletePay ?
                         <View style={{ backgroundColor: COLORS.primary }}>
                             <TouchableOpacity style={{ padding: 20, }} onPress={() => this.onValidateCard()}>
-                                <Text style={{ color: COLORS.white, textAlign: 'center' }}>PAGAR S/ 10.00</Text>
+                                <Text style={{ ...FONTS.h3, color: COLORS.white, textAlign: 'center' }}>PAGAR S/ {formatMoney(this.state.montoTotal)}</Text>
                             </TouchableOpacity>
                         </View>
                         : null
                 }
-
-
             </SafeAreaView >
         );
     }
@@ -180,8 +243,12 @@ const styles = StyleSheet.create({
     },
 });
 
+const mapStateToProps = (state) => {
+    return {
+        token: state.personaReducer
+    }
+}
 
-
-export default CrediCars;
+export default connect(mapStateToProps)(CrediCars);
 
 

@@ -69,6 +69,23 @@ export function isEmpty(obj) {
     return true;
 }
 
+export function getDateForma(value, format = "dd/mm/yyyy") {
+    var parts = value.split("-");
+    let today = new Date(parts[0], parts[1] - 1, parts[2]);
+    return (
+        format == "dd/mm/yyyy" ? (
+            (today.getDate() > 9 ? today.getDate() : "0" + today.getDate()) +
+            "/" +
+            (today.getMonth() + 1 > 9 ?
+                today.getMonth() + 1 :
+                "0" + (today.getMonth() + 1)) +
+            "/" +
+            today.getFullYear()) :
+            today.getFullYear() + "-" + (today.getMonth() + 1 > 9 ? today.getMonth() + 1 : "0" + (today.getMonth() + 1)) + "-" + (today.getDate() > 9 ? today.getDate() : "0" + today.getDate())
+    );
+}
+
+
 export function getCurrentDate() {
     let today = new Date();
     let formatted_date = today.getFullYear() + "-" + ((today.getMonth() + 1) > 9 ? (today.getMonth() + 1) : '0' + (today.getMonth() + 1)) + "-" + (today.getDate() > 9 ? today.getDate() : '0' + today.getDate());

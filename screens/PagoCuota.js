@@ -1,9 +1,9 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet, SafeAreaView, StatusBar, ScrollView, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Image, Text, View, StyleSheet, SafeAreaView, StatusBar, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL, images } from '../constants';
-import CheckBox from '@react-native-community/checkbox';
-import { formatMoney, nombreMes } from "./tools/Tools";
+import { formatMoney } from "./tools/Tools";
 import { connect } from 'react-redux';
+import ChechBox from './components/CheckBox';
 
 class PagoCuota extends React.Component {
 
@@ -19,7 +19,7 @@ class PagoCuota extends React.Component {
             totalCuotas: 0,
             countCurrentDate: 0,
             yearCurrentView: "",
-            monthCurrentView: ""
+            monthCurrentView: "",
         }
         this.props.navigation.setOptions({
             title: 'Pagar Cuota Sociales',
@@ -38,9 +38,50 @@ class PagoCuota extends React.Component {
     }
 
     onEventAgregarCuota = () => {
-        this.setState({ countCurrentDate: 1 }, () => {
-            this.loadCuotas();
-        });
+        if (!this.state.isLoading) {
+            this.setState({ countCurrentDate: 1 }, () => {
+                this.loadCuotas();
+            });
+        }
+
+    }
+
+    onEventRemoverCuota = () => {
+        if (this.state.cuotas.length != 0) {
+            this.state.cuotas.pop();
+            this.setState(this.state.cuotas, () => {
+                if (this.state.cuotas.length > 0) {
+                    let monto = 0;
+                    for (item of this.state.cuotas) {
+                        for (let c of item.concepto) {
+                            monto += parseFloat(c.Precio);
+                        }
+                    }
+                    let montoTotal = 0;
+                    montoTotal += parseFloat(monto);
+
+                    let y = "";
+                    let m = "";
+                    if (this.state.cuotas.length > 0) {
+                        y = this.state.cuotas[this.state.cuotas.length - 1].year;
+                        m = this.state.cuotas[this.state.cuotas.length - 1].mes;
+                    }
+
+                    this.setState({
+                        totalCuotas: montoTotal,
+                        monthCurrentView: m,
+                        yearCurrentView: y
+                    });
+                } else {
+                    if (this.state.yearCurrentView != "" && this.state.monthCurrentView != "") {
+                        this.setState({ monthCurrentView: this.state.monthCurrentView - 1 });
+                    }
+                    this.setState({
+                        countCurrentDate: 0,
+                    });
+                }
+            });
+        }
     }
 
     componentDidMount() {
@@ -79,39 +120,49 @@ class PagoCuota extends React.Component {
                     y = result.data[result.data.length - 1].year;
                     m = result.data[result.data.length - 1].mes;
                 }
-                this.setState({ isLoading: false, message: '', cuotas: result.data, totalCuotas: montoTotal, yearCurrentView: y, monthCurrentView: m });
-
-                console.warn(result)
+                this.setState({
+                    isLoading: false,
+                    message: '',
+                    cuotas: result.data,
+                    totalCuotas: montoTotal,
+                    yearCurrentView: y,
+                    monthCurrentView: m
+                });
             } else {
-                this.setState({ isLoading: false, message: result.message });
+                this.setState({
+                    isLoading: false,
+                    message: result.message
+                });
             }
         } catch (error) {
-            this.setState({ isLoading: false, message: 'Error de conexión del cliente, intente nuevamente en un par de minutos.' });
+            this.setState({
+                isLoading: false,
+                message: 'Error de conexión del cliente, intente nuevamente en un par de minutos.'
+            });
             console.warn(error);
         }
     }
 
-    selectCheck = (value, index) => {
-        console.warn(index);
-        // for (let c of this.state.cuotas) {
-        //     console.warn(c);
-        // }
-        // let nmroCheckbox = index;
-        // while (this.state.cuotas.length >= nmroCheckbox) {
-        //     if ($("#" + nmroCheckbox).prop('checked')) {
-        //         //         $("#" + nmroCheckbox).prop('checked', false);
+    onEventConfirmarPago() {
+        if (this.state.cuotas.length == 0) {
+            Alert.alert("Pago de Cuotas", "No hay cuotas en la lista para continuar.");
+        } else if (this.state.totalCuotas <= 0) {
+            Alert.alert("Pago de Cuotas", "No se puede completar el pago si el monto es menor que 0.");
+        } else {
+            this.props.navigation.navigate('CrediCars',
+                {
+                    "monto": formatMoney(this.state.totalCuotas),
+                    "cuotas": this.state.cuotas
+                });
+        }
+    }
 
-        //     }
-        //     nmroCheckbox++;
-        // }
-
-        // let nCheckBox = index;
-        // while (nCheckBox >= 0) {
-        //     if (!$("#" + nCheckBox).is(':checked')) {
-        //         $("#" + nCheckBox).prop('checked', true);
-        //     }
-        //     nCheckBox--;
-        // }
+    selectCheck = (item) => {
+        if (!this.state.isLoading) {
+            this.setState({ countCurrentDate: 0, yearCurrentView: item.year, monthCurrentView: item.mes }, () => {
+                this.loadCuotas();
+            });
+        }
     }
 
     itemRenderCuota(item, index) {
@@ -120,30 +171,12 @@ class PagoCuota extends React.Component {
             monto += parseFloat(c.Precio);
         }
         return (
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 5, paddingVertical: 10 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <CheckBox
-                        disabled={false}
-                        value={true}
-                        onValueChange={(value) => { this.selectCheck(value, (index + 1)) }}
-                    />
-                    {/* <TouchableOpacity onPress={() => this.selectCheck(index + 1)}>
-                        <Image
-                            source={icons.checked}
-                            style={{
-                                width: 22,
-                                height: 22,
-                                tintColor: COLORS.blue,
-                                resizeMode: 'stretch',
-                            }}
-                        />
-                    </TouchableOpacity> */}
-                    <Text style={{ ...FONTS.body4, color: COLORS.secondary, marginLeft: 5 }}>{nombreMes(item.mes)} - {item.year}</Text>
-                </View>
-                <View>
-                    <Text style={{ ...FONTS.body4, color: COLORS.secondary }}>{formatMoney(monto)}</Text>
-                </View>
-            </View>
+            <ChechBox
+                index={(index + 1)}
+                item={item}
+                monto={monto}
+                selectCheck={this.selectCheck}
+            />
         );
     }
 
@@ -180,7 +213,9 @@ class PagoCuota extends React.Component {
                         />
                         <Text style={{ ...FONTS.h4, color: COLORS.white }}>Agregar</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5 }}>
+                    <TouchableOpacity
+                        onPress={this.onEventRemoverCuota}
+                        style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5 }}>
                         <Image
                             source={icons.minus}
                             style={{
@@ -222,11 +257,20 @@ class PagoCuota extends React.Component {
                                         />
                                     </View>
 
-                                    <View style={{ paddingHorizontal: 20, paddingVertical: 10, backgroundColor: COLORS.green, justifyContent: 'center' }}>
-                                        <View>
-                                            <Text style={styles.textMessageData}>TOTAL DE {this.state.cuotas.length} CUOTAS: {formatMoney(this.state.totalCuotas)}</Text>
+                                    <View style={{ paddingHorizontal: 20, paddingVertical: 10, backgroundColor: COLORS.green, }}>
+                                        <TouchableOpacity
+                                            style={{ justifyContent: 'center', alignItems: 'center' }}
+                                            onPress={() => this.onEventConfirmarPago()}>
+                                            <View style={{ flexDirection: 'row' }}>
+                                                <Image
+                                                    source={icons.pay}
+                                                    resizeMode='contain'
+                                                    style={{ width: 24, height: 24, tintColor: COLORS.white }} />
+                                                <Text style={{ ...FONTS.h3, color: COLORS.white, textAlign: 'center', marginLeft: 10 }}>PAGAR</Text>
+                                            </View>
+                                            <Text style={styles.textMessageData}>N° DE CUOTAS {this.state.cuotas.length} TOTAL S/ {formatMoney(this.state.totalCuotas)}</Text>
                                             <Text style={styles.textMessageData}>CUOTAS DEL: {this.state.cuotas[0].mes}/{this.state.cuotas[0].year} al {this.state.cuotas[this.state.cuotas.length - 1].mes}/{this.state.cuotas[this.state.cuotas.length - 1].year}</Text>
-                                        </View>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
 
@@ -264,7 +308,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     textMessageData: {
-        ...FONTS.h3, color: COLORS.white, textAlign: 'center'
+        ...FONTS.h4, color: COLORS.white, textAlign: 'center'
     },
 });
 

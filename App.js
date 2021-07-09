@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Login, Credenciales, EstadoCuenta, Contactenos, SplashScreen, CrediCars, PagoCuota } from './screens';
+import { Login, Credenciales, EstadoCuenta, Contactenos, SplashScreen, CrediCars, PagoCuota, ConfirmarPago } from './screens';
 import Tabs from './navigation/tabs';
 import SecureStorage from 'react-native-secure-storage';
 import { connect } from 'react-redux';
@@ -23,7 +23,6 @@ class App extends React.Component {
       this.props.restore(null);
     }
   }
-
 
 
   render() {
@@ -52,6 +51,8 @@ class App extends React.Component {
                   />
                   <Stack.Screen name="EstadoCuenta" component={EstadoCuenta} />
                   <Stack.Screen name="PagoCuota" component={PagoCuota} />
+                  <Stack.Screen name="CrediCars" component={CrediCars} />
+                  <Stack.Screen name="ConfirmarPago" component={ConfirmarPago} />
                 </>
               )
           }

@@ -9,5 +9,19 @@ import Credenciales from './Credenciales';
 import Servicios from './Servicios';
 import CrediCars from './CrediCars';
 import PagoCuota from './PagoCuota';
+import ConfirmarPago from './ConfirmarPago';
 
-export { Login, Home, Perfil, Contactenos, Comprobantes, Credenciales, EstadoCuenta, SplashScreen, Servicios, CrediCars, PagoCuota };
+export {
+    Login,
+    Home,
+    Perfil,
+    Contactenos,
+    Comprobantes,
+    Credenciales,
+    EstadoCuenta,
+    SplashScreen,
+    Servicios,
+    CrediCars,
+    PagoCuota,
+    ConfirmarPago
+};
