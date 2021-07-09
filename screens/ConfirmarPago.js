@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL } from '../constants';
-import { getDateForma } from "./tools/Tools";
+import { getDateFormaMMYY } from "./tools/Tools";
 import { connect } from 'react-redux';
 
 class ConfirmarPago extends React.Component {
@@ -70,6 +70,14 @@ class ConfirmarPago extends React.Component {
         }
     }
 
+    onEventCancelarPago = () => {
+        this.props.navigation.navigate('Servicios');
+    }
+
+    onEventConfirmarPago = () => {
+
+    }
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
@@ -91,7 +99,7 @@ class ConfirmarPago extends React.Component {
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
                         <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
                             <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>PAGO DE CUOTAS</Text>
-                            <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>DEL {getDateForma(this.props.route.params.cuotasInicio)} AL {getDateForma(this.props.route.params.cuotasFin)}</Text>
+                            <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>DEL {getDateFormaMMYY(this.props.route.params.cuotasInicio)} AL {getDateFormaMMYY(this.props.route.params.cuotasFin)}</Text>
                         </View>
                         <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
                             <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>TARJETA</Text>
@@ -115,6 +123,38 @@ class ConfirmarPago extends React.Component {
                         </View>
                         <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
                             <Text>Verificar datos antes de continuar; una ves realizado el pago, anularlo toma varios días.</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 13, paddingVertical: 8 }}
+                                onPress={this.onEventCancelarPago}>
+                                <Image
+                                    source={icons.minus}
+                                    style={{
+                                        width: 14,
+                                        height: 14,
+                                        margin: 5,
+                                        tintColor: COLORS.white,
+                                        resizeMode: 'stretch',
+                                    }}
+                                />
+                                <Text style={{ ...FONTS.h4, color: COLORS.white }}>Cancelar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 13, paddingVertical: 8 }}
+                                onPress={this.onEventConfirmarPago}>
+                                <Image
+                                    source={icons.plus}
+                                    style={{
+                                        width: 14,
+                                        height: 14,
+                                        margin: 5,
+                                        tintColor: COLORS.white,
+                                        resizeMode: 'stretch',
+                                    }}
+                                />
+                                <Text style={{ ...FONTS.h4, color: COLORS.white }}>Confirmar</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </ScrollView>

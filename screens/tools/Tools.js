@@ -85,6 +85,17 @@ export function getDateForma(value, format = "dd/mm/yyyy") {
     );
 }
 
+export function getDateFormaMMYY(value) {
+    var parts = value.split("-");
+    let today = new Date(parts[0], parts[1] - 1, parts[2]);
+    return (
+        (today.getMonth() + 1 > 9 ?
+            today.getMonth() + 1 :
+            "0" + (today.getMonth() + 1)) +
+        "/" +
+        today.getFullYear());
+}
+
 
 export function getCurrentDate() {
     let today = new Date();
