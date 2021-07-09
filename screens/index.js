@@ -10,8 +10,9 @@ import Servicios from './Servicios';
 import CrediCars from './CrediCars';
 import PagoCuota from './PagoCuota';
 import ConfirmarPago from './ConfirmarPago';
+import RespuestaPago from './RespuestaPago';
 
-export {
+export { 
     Login,
     Home,
     Perfil,
@@ -23,5 +24,6 @@ export {
     Servicios,
     CrediCars,
     PagoCuota,
-    ConfirmarPago
+    ConfirmarPago,
+    RespuestaPago
 };

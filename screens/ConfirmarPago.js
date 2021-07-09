@@ -28,11 +28,10 @@ class ConfirmarPago extends React.Component {
     }
 
     componentDidMount() {
-
+        
     }
 
     async onEventConfirmation() {
-
         this.setState({ isLoading: true });
         try {
             let response = await fetch(URL.REGISTRAR_PAGO, {
@@ -47,7 +46,7 @@ class ConfirmarPago extends React.Component {
                     "expiration_month": this.props.route.params.expiration_month,
                     "expiration_year": this.props.route.params.expiration_year,
                     "email": this.props.route.params.email,
-                    "monto": this.props.route.params.montoTotal,
+                    "monto": this.props.route.params.monto,
                     "idPersona": this.state.token.idDNI,
                     "estado": 'C',
                     "estadoCuotas": true,
@@ -75,7 +74,9 @@ class ConfirmarPago extends React.Component {
     }
 
     onEventConfirmarPago = () => {
-
+        this.props.navigation.navigate('RespuestaPago',{
+            "monto":this.props.route.params.monto
+        });
     }
 
     render() {
