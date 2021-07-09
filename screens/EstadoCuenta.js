@@ -130,7 +130,7 @@ class EstadoCuenta extends React.Component {
                         </View>
 
                         <View style={{ width: '30%', justifyContent: 'center' }}>
-                          <TouchableOpacity onPress={() => { OpenAnything.Pdf(URL.DOMINIO+'app/sunat/pdfingresos.php?idIngreso=' + item.idIngreso) }} style={styles.exportPdf}>
+                          <TouchableOpacity onPress={() => { OpenAnything.Pdf(URL.DOMINIO+'sunat/pdfingresos.php?idIngreso=' + item.idIngreso) }} style={styles.exportPdf}>
                             <Image
                               style={{ width: 30, height: 30, tintColor: COLORS.white }}
                               source={icons.documentPdf}

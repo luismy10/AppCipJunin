@@ -1,12 +1,12 @@
 /**
  * DOMINIO PARA DESARROLLO
  */
-const DOMINIO_PRO = "http://cipjunin.sytes.net/WebCipJunin/";
+const DOMINIO_PRO = "http://cipjunin.sytes.net/WebCipJunin/app/";
 
 /**
  * DOMINIO PARA PRUEBAS
  */
-const DOMINIO_PRU = "http://192.168.1.15:8080/WebCipJunin/";
+const DOMINIO_PRU = "http://192.168.1.15/WebCipJunin/app/";
 
 /**
  * DOMINIO PARA DESARROLLO
@@ -23,19 +23,21 @@ const EXT_DEV = "";
 
 const EXT = EXT_PRO;
 
-export const DOMINIO = DOMINIO_PRU;
+const URLDOMINIO = DOMINIO_PRO;
 
-export const LOGIN_PERSONA = DOMINIO + "app/api/login" + EXT;
+export const LOGIN_PERSONA = URLDOMINIO + "api/login" + EXT;
 
-export const INGRESOS_PERSONA = DOMINIO + "app/api/ingresos" + EXT;
+export const INGRESOS_PERSONA = URLDOMINIO + "api/ingresos" + EXT;
 
-export const INFORMACION_PERSONA = DOMINIO + "app/api/informacion" + EXT;
+export const INFORMACION_PERSONA = URLDOMINIO + "api/informacion" + EXT;
 
-export const PERFIL_PERSONA = DOMINIO + "app/api/perfil" + EXT;
+export const PERFIL_PERSONA = URLDOMINIO + "api/perfil" + EXT;
 
-export const PAGOS_CUOTAS = DOMINIO + "app/api/cuotas" + EXT;
+export const PAGOS_CUOTAS = URLDOMINIO + "api/cuotas" + EXT;
 
-export const REGISTRAR_PAGO = DOMINIO + "app/api/culqi/payment" + EXT;
+export const REGISTRAR_PAGO = URLDOMINIO + "api/culqi/payment" + EXT;
+
+export const DOMINIO = URLDOMINIO;
 
 export default {
   /**
