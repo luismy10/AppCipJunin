@@ -31,14 +31,14 @@ class Login extends React.Component {
     }
   }
 
-  onEventLogin = async () => {
+   async onEventLogin () {
     if (this.state.usuario.trim().length == 0) {
       Alert.alert("Login", "Ingrese sus credenciales para continuar.");
     } else if (this.state.clave.trim().length == 0) {
       Alert.alert("Login", "Ingrese sus credenciales para continuar.");
     } else {
       if (!this.state.isLogin) {
-        this.setState({ isLogin: true })
+        this.setState({ isLogin: true });
         try {
           const response = await fetch(URL.LOGIN_PERSONA, {
             method: "POST",
@@ -67,7 +67,7 @@ class Login extends React.Component {
           }
         } catch (error) {
           this.setState({ isLogin: false });
-          Alert.alert("Alerta", "Error de conexión del cliente, intente nuevamente en un par de minutos.");
+          Alert.alert("Alerta", "Error de conexión del cliente: "+error);
         }
       }
     }
