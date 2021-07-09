@@ -23,7 +23,7 @@ const EXT_DEV = "";
 
 const EXT = EXT_PRO;
 
-export const DOMINIO = DOMINIO_PRU;
+export const DOMINIO = DOMINIO_PRO;
 
 export const LOGIN_PERSONA = DOMINIO + "app/api/login" + EXT;
 
