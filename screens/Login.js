@@ -31,16 +31,15 @@ class Login extends React.Component {
     }
   }
 
-   async onEventLogin () {
+   onEventLogin () {
     if (this.state.usuario.trim().length == 0) {
       Alert.alert("Login", "Ingrese sus credenciales para continuar.");
     } else if (this.state.clave.trim().length == 0) {
       Alert.alert("Login", "Ingrese sus credenciales para continuar.");
     } else {
       if (!this.state.isLogin) {
-        this.setState({ isLogin: true });
-        try {
-          const response = await fetch(URL.LOGIN_PERSONA, {
+        this.setState({ isLogin: true },()=>{ });
+          fetch(URL.LOGIN_PERSONA, {
             method: "POST",
             headers: {
               'Accept': 'application/json',
@@ -50,25 +49,24 @@ class Login extends React.Component {
               "usuario": this.state.usuario.trim(),
               "clave": this.state.clave.trim()
             })
-          });
-          const result = await response.json();
-          if (result.state == 1) {
-            try {
-              await SecureStorage.setItem('user', JSON.stringify(result.persona));
+          }).then(response=>{return response.json()
+          }).then(result=>{
+            if (result.state == 1) {
+              SecureStorage.setItem('user', JSON.stringify(result.persona)).then(data=>{
+                this.setState({ isLogin: false });
+                this.props.addToken(JSON.stringify(result.persona));
+              }).catch(error=>{
+                this.setState({ isLogin: false });
+                Alert.alert("Alerta", "No se pudo guardar la información, intente nuevamente.");
+              });
+            } else {
               this.setState({ isLogin: false });
-              this.props.addToken(JSON.stringify(result.persona));
-            } catch (error) {
-              this.setState({ isLogin: false });
-              Alert.alert("Alerta", "No se pudo guardar la información, intente nuevamente.");
+              Alert.alert("Alerta", result.message);
             }
-          } else {
+          }).catch(error=>{
             this.setState({ isLogin: false });
-            Alert.alert("Alerta", result.message);
-          }
-        } catch (error) {
-          this.setState({ isLogin: false });
-          Alert.alert("Alerta", "Error de conexión del cliente: "+error);
-        }
+            Alert.alert("Alerta", "Error de conexión del cliente, intente nuevamente en un par de minutos.");
+          });       
       }
     }
   }

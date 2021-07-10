@@ -17,7 +17,6 @@ class CrediCars extends React.Component {
             isVisibleName: false,
             isCompletePay: false,
             isFocus: false,
-            isLoading: false,
             montoTotal: 0,
             cuotasInicio: "",
             cuotasFin: ""
@@ -161,20 +160,7 @@ class CrediCars extends React.Component {
                     <View>
                         <Text style={{ ...FONTS.h3 }}>S/ {this.props.route.params.monto}</Text>
                     </View>
-                </View>
-                {
-                    this.state.isLoading ?
-                        <View style={{ position: 'absolute', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', alignItems: 'center', left: 0, top: 0, zIndex: 20 }}>
-                            <View style={{ backgroundColor: 'white', width: '50%' }}>
-                                <View style={{ padding: 10, alignItems: 'center' }}>
-                                    <ActivityIndicator size="large" color={COLORS.primary} />
-                                    <Text style={{ ...FONTS.h3, color: COLORS.secondary, textAlign: 'center' }}>Procesando Transacción..</Text>
-                                </View>
-                            </View>
-                        </View>
-                        : null
-                }
-
+                </View>              
 
                 <View style={{ flex: 1, paddingVertical: 10, }}>
                     <ScrollView>

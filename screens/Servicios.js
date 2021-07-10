@@ -33,7 +33,7 @@ class Servicios extends React.Component {
                 <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
                     <View style={styles.container}>
 
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap',alignItems: 'center',justifyContent: 'center'}}>
 
                             <TouchableOpacity style={styles.box} onPress={this.onEventPagoCuota}>
                                 <Image source={icons.seed} style={{ width: 24, height: 24, tintColor: COLORS.primary }} />

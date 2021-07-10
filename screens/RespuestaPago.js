@@ -41,7 +41,8 @@ class RespuestaPago extends React.Component {
         this.props.navigation.navigate('Servicios');
     }
 
-    render() {
+    render() { 
+        let {estado,message,monto} = this.props.route.params;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
                 <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
@@ -50,15 +51,15 @@ class RespuestaPago extends React.Component {
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
                         <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10,marginBottom:10,flexDirection:'row',alignItems: 'center'}}>
                             <Image
-                            source={icons.ok}
+                            source={estado == 1 ? icons.ok : icons.error}
                             resizeMode='contain'
                             style={{ width: 36, height: 36, marginRight: 10 }} />
-                            <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>La transacción se ha realizado correctamente.</Text>
+                            <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{message}</Text>
                         </View>
                         
                         <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
                             <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>MONTO</Text>
-                            <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {this.props.route.params.monto}</Text>
+                            <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {monto}</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10 }}>
@@ -72,11 +73,12 @@ class RespuestaPago extends React.Component {
                                 }}
                                 onPress={this.onEventVolver}>
                                 <Image
-                                    source={icons.error}
+                                    source={icons.back}
                                     style={{
                                         width: 14,
                                         height: 14,
                                         margin: 5,
+                                        tintColor: COLORS.white,
                                         resizeMode: 'stretch',
                                     }}
                                 />

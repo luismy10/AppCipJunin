@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet, SafeAreaView, StatusBar, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Image, Text, View, StyleSheet, SafeAreaView, StatusBar, FlatList, TouchableOpacity, ActivityIndicator,Alert } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL, images } from '../constants';
 import { formatMoney } from "./tools/Tools";
 import { connect } from 'react-redux';
