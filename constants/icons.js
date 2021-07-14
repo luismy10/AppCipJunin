@@ -42,6 +42,11 @@ export const pay = require("../assets/icons/pay.png");
 export const checked = require("../assets/icons/checked.png");
 export const check = require("../assets/icons/check.png");
 export const minus = require("../assets/icons/minus.png");
+export const cuenta = require("../assets/icons/estadocuenta.png");
+export const certHabilidad = require("../assets/icons/certhabilidad.png");
+export const certObra = require("../assets/icons/certObra.png");
+export const certProyecto = require("../assets/icons/certproyecto.png");
+export const pagos = require("../assets/icons/pagos.png");
 
 export default {
     camera,
@@ -87,5 +92,10 @@ export default {
     pay,
     checked,
     check,
-    minus
+    minus,
+    cuenta,
+    certHabilidad,
+    certObra,
+    certProyecto,
+    pagos
 }

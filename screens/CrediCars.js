@@ -192,7 +192,7 @@ class CrediCars extends React.Component {
                             paddingHorizontal: 20,
                             alignItems: 'center'
                         }}>
-                            <Text style={{ ...FONTS.h3, color: COLORS.secondary, textAlign: 'center' }}>SE LE VA COBRAR UN CARGO ADICIONAL AL MONTO TOTAL POR TRANSACCIÓN.</Text>
+                            <Text style={{ ...FONTS.h5, color: "#474747", textAlign: 'center' }}>Se le va a cobrar un monto adicional al monto total de la transacción.</Text>
                         </View>
                     </ScrollView>
                 </View>

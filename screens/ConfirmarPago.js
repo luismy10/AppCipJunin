@@ -119,42 +119,42 @@ class ConfirmarPago extends React.Component {
 
                 <ScrollView>
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>PAGO DE CUOTAS</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10, borderTopLeftRadius:15, borderTopRightRadius:15 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Pago de cuotas</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>DEL {getDateFormaMMYY(this.props.route.params.cuotasInicio)} AL {getDateFormaMMYY(this.props.route.params.cuotasFin)}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>TARJETA</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Tarjeta</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{this.props.route.params.card_number}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>EXPIRACIÓN</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Expiración</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{this.props.route.params.expiration_month}/{this.props.route.params.expiration_year}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>CVC/CCV</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>CVC/CCV</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{this.props.route.params.cvv}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>EMAIL</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Email</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{this.props.route.params.email}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>MONTO</Text>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Monto</Text>
                             <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {this.props.route.params.monto}</Text>
                         </View>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10, borderBottomLeftRadius:15, borderBottomRightRadius: 15}}>
                             <Text>Verifique sus datos antes de continuar; una ves realizado el pago, anularlo toma varios días.</Text>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
                             <TouchableOpacity
-                                style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 13, paddingVertical: 8 }}
+                                style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10}}
                                 onPress={this.onEventCancelarPago}>
                                 <Image
                                     source={icons.minus}
                                     style={{
-                                        width: 14,
-                                        height: 14,
+                                        width: 16,
+                                        height: 16,
                                         margin: 5,
                                         tintColor: COLORS.white,
                                         resizeMode: 'stretch',
@@ -163,13 +163,13 @@ class ConfirmarPago extends React.Component {
                                 <Text style={{ ...FONTS.h4, color: COLORS.white }}>Cancelar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 13, paddingVertical: 8 }}
+                                style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }}
                                 onPress={()=>{this.onEventConfirmarPago()}}>
                                 <Image
                                     source={icons.plus}
                                     style={{
-                                        width: 14,
-                                        height: 14,
+                                        width: 16,
+                                        height: 16,
                                         margin: 5,
                                         tintColor: COLORS.white,
                                         resizeMode: 'stretch',

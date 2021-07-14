@@ -200,12 +200,12 @@ class PagoCuota extends React.Component {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 10 }}>
                     <TouchableOpacity
                         onPress={this.onEventAgregarCuota}
-                        style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5 }}>
+                        style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius:10 }}>
                         <Image
                             source={icons.plus}
                             style={{
-                                width: 14,
-                                height: 14,
+                                width: 16,
+                                height: 16,
                                 margin: 5,
                                 tintColor: COLORS.white,
                                 resizeMode: 'stretch',
@@ -215,12 +215,12 @@ class PagoCuota extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={this.onEventRemoverCuota}
-                        style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5 }}>
+                        style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius:10 }}>
                         <Image
                             source={icons.minus}
                             style={{
-                                width: 14,
-                                height: 14,
+                                width: 16,
+                                height: 16,
                                 margin: 5,
                                 tintColor: COLORS.white,
                                 resizeMode: 'stretch',

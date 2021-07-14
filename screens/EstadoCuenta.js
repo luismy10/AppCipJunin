@@ -130,7 +130,7 @@ class EstadoCuenta extends React.Component {
                         </View>
 
                         <View style={{ width: '30%', justifyContent: 'center' }}>
-                          <TouchableOpacity onPress={() => { OpenAnything.Pdf(URL.DOMINIO+'sunat/pdfingresos.php?idIngreso=' + item.idIngreso) }} style={styles.exportPdf}>
+                          <TouchableOpacity onPress={() => { OpenAnything.Pdf(URL.DOMINIO+'sunat/pdfingresosDonwload.php?idIngreso=' + item.idIngreso) }} style={styles.exportPdf}>
                             <Image
                               style={{ width: 30, height: 30, tintColor: COLORS.white }}
                               source={icons.documentPdf}
@@ -177,6 +177,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.71,
     shadowRadius: 10,
     elevation: 5,
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15
   },
   cabecera: {
     width: '100%',
@@ -184,6 +186,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
     paddingVertical: 5,
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15
   },
   estadoDocumento: {
     backgroundColor: '#68E55D',

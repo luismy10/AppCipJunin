@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity,BackHandler  } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity,BackHandler ,Platform } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL } from '../constants';
 import { getDateFormaMMYY } from "./tools/Tools";
 import { connect } from 'react-redux';
@@ -29,7 +29,9 @@ class RespuestaPago extends React.Component {
     }
 
     componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+        if(Platform.OS !== 'ios'){
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+        }      
     }
 
     handleBackButton = () => {
@@ -62,7 +64,7 @@ class RespuestaPago extends React.Component {
                             <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {monto}</Text>
                         </View>
 
-                        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 10 }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', paddingHorizontal: 10, paddingVertical: 5 }}>
                             <TouchableOpacity
                                 style={{
                                     flexDirection: 'row',
@@ -75,8 +77,8 @@ class RespuestaPago extends React.Component {
                                 <Image
                                     source={icons.back}
                                     style={{
-                                        width: 14,
-                                        height: 14,
+                                        width: 16,
+                                        height: 16,
                                         margin: 5,
                                         tintColor: COLORS.white,
                                         resizeMode: 'stretch',

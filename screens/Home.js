@@ -248,7 +248,7 @@ class Home extends React.Component {
 
                     {/* START */}
 
-                    <View style={{ backgroundColor: '#BABABA', paddingHorizontal: 20, paddingVertical: 10 }}>
+                    <View style={{ backgroundColor: '#BABABA', paddingHorizontal: 20, paddingTop: 10, paddingBottom: 30, borderBottomLeftRadius:25, borderBottomRightRadius:25 }}>
                       <View style={{ marginBottom: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Eventos</Text>
                         <TouchableOpacity>
@@ -267,6 +267,37 @@ class Home extends React.Component {
                     </View>
 
                     {/* END */}
+
+                    {/* REVISTAS */}
+                    <View style={{ height: SIZES.height * 0.70, backgroundColor: COLORS.lightGray }}>
+                    <View style={{ flex: 1,  borderBottomLeftRadius: 30, borderBottomRightRadius: 30,  backgroundColor: COLORS.white, paddingBottom: 40,}}>
+                      <View style={{ marginTop: SIZES.font, marginHorizontal: SIZES.padding }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <Text style={{ color: COLORS.secondary, ...FONTS.h2 }}>Revistas</Text>
+                          <TouchableOpacity style={{}} onPress={() => { }}>
+                            <Text style={{ color: COLORS.secondary, ...FONTS.body3 }}>Ver Todo</Text>
+                          </TouchableOpacity>
+                        </View>
+                        <View style={{ flexDirection: 'row', height: '88%', marginTop: SIZES.base }}>
+                          <View style={{ flex: 1 }}>
+                            <TouchableOpacity style={{ flex: 1 }}>
+                              <Image source={images.revista1} resizeMode='cover' style={{  width: "100%", height: "100%", borderRadius: 20}} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{ flex: 1, marginTop: SIZES.font }}>
+                              <Image source={images.revista2} resizeMode='cover' style={{ width: "100%", height: "100%", borderRadius: 20 }} />
+                            </TouchableOpacity>
+                          </View>
+                          <View style={{ flex: 1.3 }}>
+                            <TouchableOpacity style={{ flex: 1, marginLeft: SIZES.font }}>
+                              <Image source={images.revista3} resizeMode='cover' style={{ width: '100%', height: '100%', borderRadius: 20 }}/>
+                            </TouchableOpacity>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                    {/*eND REVISTAS */}
 
                     {/* START */}
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
@@ -343,10 +374,11 @@ const styles = StyleSheet.create({
   box: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: 10
+    marginBottom: 10,
+    justifyContent: 'space-between',
   },
   boxBody: {
-    width: '50%',
+    width: '48%',
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: COLORS.white,
@@ -356,6 +388,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.51,
     shadowRadius: 10,
     elevation: 1,
+    borderRadius:10
   },
   boxImage: {
     width: 26,

@@ -23,28 +23,28 @@ class Comprobantes extends React.Component {
 
         <View style={styles.container}>
 
-          <View style={styles.box}>
+          <View style={styles.box1}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('EstadoCuenta')}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.search} style={styles.icon} />
-                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Est. Cuentas</Text>
+                <Image source={icons.cuenta} style={styles.icon1} />
+                <Text style={{ ...FONTS.h4, color: COLORS.white }}>Est. Cuentas</Text>
               </View>
             </TouchableOpacity>
           </View>
 
           <View style={styles.box}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.search} style={styles.icon} />
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>                
                 <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Habilidad</Text>
+                <Image source={icons.certHabilidad} style={styles.icon} />
               </View>
             </TouchableOpacity>
           </View>
 
-          <View style={styles.box}>
+          <View style={styles.box1}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.search} style={styles.icon} />
+                <Image source={icons.certObra} style={styles.icon1} />
                 <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Obra</Text>
               </View>
             </TouchableOpacity>
@@ -52,9 +52,9 @@ class Comprobantes extends React.Component {
 
           <View style={styles.box}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.search} style={styles.icon} />
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>                
                 <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Proyecto</Text>
+                <Image source={icons.certProyecto} style={styles.icon} />
               </View>
             </TouchableOpacity>
           </View>
@@ -83,11 +83,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: 'space-between'
   },
+  box1: {
+    minWidth: '70%',
+    backgroundColor: "#F06B5C",
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: "#F04734",
+    borderWidth: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: -1, height: 5, },
+    shadowOpacity: 0.71,
+    shadowRadius: 10,
+    elevation: 5,
+    marginBottom: 20,
+    borderRadius:25,
+  },
   box: {
     minWidth: '70%',
     backgroundColor: COLORS.white,
     paddingHorizontal: 30,
-    paddingVertical: 10,
+    paddingVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: COLORS.gray,
@@ -98,12 +115,20 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5,
     marginBottom: 20,
+    borderRadius:25,
+  },
+  icon1: {
+    width: 20,
+    height: 20,
+    resizeMode: 'stretch',
+    marginRight: 50,
+    tintColor: COLORS.white
   },
   icon: {
     width: 20,
     height: 20,
     resizeMode: 'stretch',
-    marginRight: 10,
+    marginLeft: 50,
     tintColor: COLORS.primary
   }
 });

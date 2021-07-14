@@ -80,14 +80,25 @@ class Tabs extends React.Component {
                                     width: 22,
                                     height: 22
                                 }} />);
-                            case "Servicios": return (<Image
-                                source={icons.services}
-                                resizeMode='contain'
+                            case "Servicios": return (<View
                                 style={{
-                                    tintColor: tintColor,
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: 40,
+                                  height: 40,
+                                  borderRadius: 25,
+                                  backgroundColor: COLORS.primary,
+                                }}>
+                                <Image
+                                  source={icons.pagos}
+                                  resizeMode="contain"
+                                  style={{
+                                    tintColor: COLORS.white,
                                     width: 22,
-                                    height: 22
-                                }} />);
+                                    height: 22,
+                                  }}
+                                />
+                              </View>);
                             case "Contactenos": return (<Image
                                 source={icons.contactanos}
                                 resizeMode='contain'
