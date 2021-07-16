@@ -1,11 +1,8 @@
 import React from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { COLORS, icons, FONTS, images } from '../constants';
+import { COLORS, icons } from '../constants';
 import { Home, Perfil, Contactenos, Comprobantes, Servicios } from '../screens';
-import SecureStorage from 'react-native-secure-storage';
-import { connect } from 'react-redux';
-import { signOut } from '../screens/actions/persona';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,45 +10,49 @@ class Tabs extends React.Component {
 
     constructor(props) {
         super(props);
-        this.props.navigation.setOptions({
-            title: 'CIP CD JUNÍN',
-            headerStyle: {
-                backgroundColor: COLORS.primary,
-            },
-            headerTintColor: COLORS.white,
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-                ...FONTS.h3,
-                fontWeight: 'bold',
-                textAlignVertical: 'center',
-                flex: 1,
-            },
-            headerLeft: () => (
-                <View style={{ paddingHorizontal: 20 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <Image source={icons.cip} resizeMode='contain' style={{ width: 24, height: 24 }} />
-                    </View>
-                </View>
-            ),
-            headerRight: () => (
-                <View style={{ paddingHorizontal: 20 }}>
-                    <TouchableOpacity
-                        onPress={() => this.onEventCloseSession()} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <Image source={icons.turnoff} resizeMode='contain' style={{ width: 24, height: 24, tintColor: COLORS.white }} />
-                    </TouchableOpacity>
-                </View>
-            )
-        });
+        // this.props.navigation.setOptions({
+        //     title: 'CIP CD JUNÍN',
+        //     headerStyle: {
+        //         backgroundColor: COLORS.primary,
+        //     },
+        //     headerTintColor: COLORS.white,
+        //     headerTitleAlign: 'center',
+        //     headerTitleStyle: {
+        //         ...FONTS.h3,
+        //         fontWeight: 'bold',
+        //         textAlignVertical: 'center',
+        //         flex: 1,
+        //     },
+        //     headerLeft: () => (
+        //         <View style={{ paddingHorizontal: 20 }}>
+        //             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+        //                 <Image source={icons.cip} resizeMode='contain' style={{ width: 24, height: 24 }} />
+        //             </View>
+        //         </View>
+        //     ),
+        //     headerRight: () => (
+        //         <View style={{ paddingHorizontal: 20 }}>
+        //             <TouchableOpacity
+        //                 onPress={() => this.onEventCloseSession()} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+        //                 <Image source={icons.turnoff} resizeMode='contain' style={{ width: 24, height: 24, tintColor: COLORS.white }} />
+        //             </TouchableOpacity>
+        //         </View>
+        //     )
+        // });
     }
 
-    onEventCloseSession = async () => {
-        try {
-            await SecureStorage.removeItem('user');
-            this.props.removeToken();
-        } catch (e) {
-            this.props.removeToken();
-        }
+    componentDidMount() {
+
     }
+
+    // onEventCloseSession = async () => {
+    //     try {
+    //         await SecureStorage.removeItem('user');
+    //         this.props.removeToken();
+    //     } catch (e) {
+    //         this.props.removeToken();
+    //     }
+    // }
 
     render() {
         return (
@@ -68,8 +69,8 @@ class Tabs extends React.Component {
                                     resizeMode='contain'
                                     style={{
                                         tintColor: tintColor,
-                                        width: 22,
-                                        height: 22
+                                        width: 24,
+                                        height: 24
                                     }} />
                             );
                             case "Comprobantes": return (<Image
@@ -77,50 +78,51 @@ class Tabs extends React.Component {
                                 resizeMode='contain'
                                 style={{
                                     tintColor: tintColor,
-                                    width: 22,
-                                    height: 22
+                                    width: 24,
+                                    height: 24
                                 }} />);
                             case "Servicios": return (<View
                                 style={{
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  width: 40,
-                                  height: 40,
-                                  borderRadius: 25,
-                                  backgroundColor: COLORS.primary,
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: 40,
+                                    height: 40,
+                                    borderRadius: 25,
+                                    backgroundColor: COLORS.primary,
                                 }}>
                                 <Image
-                                  source={icons.pagos}
-                                  resizeMode="contain"
-                                  style={{
-                                    tintColor: COLORS.white,
-                                    width: 22,
-                                    height: 22,
-                                  }}
+                                    source={icons.pagos}
+                                    resizeMode="contain"
+                                    style={{
+                                        tintColor: COLORS.white,
+                                        width: 24,
+                                        height: 24,
+                                    }}
                                 />
-                              </View>);
+                            </View>);
                             case "Contactenos": return (<Image
                                 source={icons.contactanos}
                                 resizeMode='contain'
                                 style={{
                                     tintColor: tintColor,
-                                    width: 22,
-                                    height: 22
+                                    width: 24,
+                                    height: 24
                                 }} />);
                             case "Perfil": return (<Image
                                 source={icons.user}
                                 resizeMode='contain'
                                 style={{
                                     tintColor: tintColor,
-                                    width: 22,
-                                    height: 22,
+                                    width: 24,
+                                    height: 24,
                                 }} />);
                         }
                     }
                 })}>
                 <Tab.Screen
                     name="Home"
-                    component={Home}>
+                    component={Home}
+                    options={{ title: 'Home' }}>
                 </Tab.Screen>
                 <Tab.Screen
                     name="Comprobantes"
@@ -143,18 +145,6 @@ class Tabs extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        token: state.personaReducer
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeToken: () => dispatch(signOut())
-    }
-}
 
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
+export default Tabs;

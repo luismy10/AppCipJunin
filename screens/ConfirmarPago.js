@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity ,ActivityIndicator} from 'react-native';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL } from '../constants';
 import { getDateFormaMMYY } from "./tools/Tools";
 import { connect } from 'react-redux';
@@ -9,7 +9,7 @@ class ConfirmarPago extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading:false,
+            isLoading: false,
             token: JSON.parse(this.props.token.userToken),
         }
         this.props.navigation.setOptions({
@@ -29,7 +29,7 @@ class ConfirmarPago extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     async onEventConfirmarPago() {
@@ -59,25 +59,25 @@ class ConfirmarPago extends React.Component {
 
             let result = await response.json();
             if (result.estado == 1) {
-                this.props.navigation.navigate('RespuestaPago',{
-                    "estado":1,
-                    "message":result.message,
-                    "monto":this.props.route.params.monto
+                this.props.navigation.navigate('RespuestaPago', {
+                    "estado": 1,
+                    "message": result.message,
+                    "monto": this.props.route.params.monto
                 });
                 this.setState({ isLoading: false });
             } else {
-                this.props.navigation.navigate('RespuestaPago',{
-                    "estado":0,
-                    "message":result.message,
-                    "monto":0
+                this.props.navigation.navigate('RespuestaPago', {
+                    "estado": 0,
+                    "message": result.message,
+                    "monto": 0
                 });
                 this.setState({ isLoading: false });
-            }     
+            }
         } catch (error) {
-            this.props.navigation.navigate('RespuestaPago',{
-                "estado":0,
-                "message":"Error de conexión del cliente, intente nuevamente en un par de minutos.",
-                "monto":0
+            this.props.navigation.navigate('RespuestaPago', {
+                "estado": 0,
+                "message": "Error de conexión del cliente, intente nuevamente en un par de minutos.",
+                "monto": 0
             });
             this.setState({ isLoading: false });
         }
@@ -119,7 +119,7 @@ class ConfirmarPago extends React.Component {
 
                 <ScrollView>
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10, borderTopLeftRadius:15, borderTopRightRadius:15 }}>
+                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
                             <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Pago de cuotas</Text>
                             <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>DEL {getDateFormaMMYY(this.props.route.params.cuotasInicio)} AL {getDateFormaMMYY(this.props.route.params.cuotasFin)}</Text>
                         </View>
@@ -143,12 +143,12 @@ class ConfirmarPago extends React.Component {
                             <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>Monto</Text>
                             <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {this.props.route.params.monto}</Text>
                         </View>
-                        <View style={{ borderBottomColor: '#D6D5D5', borderBottomWidth: 1, backgroundColor: COLORS.white, padding: 10, borderBottomLeftRadius:15, borderBottomRightRadius: 15}}>
+                        <View style={{ backgroundColor: COLORS.white, padding: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
                             <Text>Verifique sus datos antes de continuar; una ves realizado el pago, anularlo toma varios días.</Text>
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
                             <TouchableOpacity
-                                style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10}}
+                                style={{ flexDirection: 'row', backgroundColor: COLORS.primary, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }}
                                 onPress={this.onEventCancelarPago}>
                                 <Image
                                     source={icons.minus}
@@ -164,7 +164,7 @@ class ConfirmarPago extends React.Component {
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{ flexDirection: 'row', backgroundColor: COLORS.green, alignItems: 'center', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10 }}
-                                onPress={()=>{this.onEventConfirmarPago()}}>
+                                onPress={() => { this.onEventConfirmarPago() }}>
                                 <Image
                                     source={icons.plus}
                                     style={{

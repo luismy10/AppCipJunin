@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, StatusBar, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, StatusBar, ScrollView, RefreshControl, ActivityIndicator, ImageBackground, FlatList } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, images, URL } from '../constants';
-import { formatMoney } from "./tools/Tools";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { formatMoney, getDateFormaMMYY } from './tools/Tools';
+import SecureStorage from 'react-native-secure-storage';
 import { connect } from 'react-redux';
+import { signOut } from '../screens/actions/persona';
 
 class Home extends React.Component {
 
@@ -20,63 +23,25 @@ class Home extends React.Component {
       capitulo: '',
       condicion: '',
       habilidad: '',
-      ultimaCuota: '',
-      habilidadHasta: '',
+      ultimaCuota: '0000-00-00',
+      habilidadHasta: '0000-00-00',
       cumplirTreinta: 0,
       deuda: 0,
       token: JSON.parse(this.props.token.userToken),
-      eventos: [
-        {
-          id: "0",
-          name: 'Evento 1',
-          img: images.evento1,
-          favourite: false
-        },
-        {
-          id: "1",
-          name: 'Evento 2',
-          img: images.evento2,
-          favourite: true
-        },
-        {
-          id: "2",
-          name: 'Evento 3',
-          img: images.evento3,
-          favourite: false
-        },
-        {
-          id: "3",
-          name: 'Evento 4',
-          img: images.evento4,
-          favourite: false
-        },
-        {
-          id: "4",
-          name: 'Evento 5',
-          img: images.evento5,
-          favourite: false
-        },
-        {
-          id: "5",
-          name: 'Evento 6',
-          img: images.evento6,
-          favourite: false
-        },
-        {
-          id: "6",
-          name: 'Evento 7',
-          img: images.evento7,
-          favourite: false
-        }
-      ]
+      refreshing: false,
+    }
+  }
+
+  onEventCloseSession = async () => {
+    try {
+      await SecureStorage.removeItem('user');
+      this.props.removeToken();
+    } catch (e) {
+      this.props.removeToken();
     }
   }
 
   async componentDidMount() {
-    this.loadInformacion();
-  }
-
-  onEventReload = async () => {
     this.loadInformacion();
   }
 
@@ -122,35 +87,206 @@ class Home extends React.Component {
     }
   }
 
-  _renderItem(item) {
+  renderNotice() {
     return (
-      <Image style={{ width: 80, height: 120 }} source={item.img} />
-    )
+      <View style={{
+        marginTop: SIZES.padding,
+        marginHorizontal: SIZES.padding,
+        padding: 20,
+        borderRadius: SIZES.radius,
+        backgroundColor: COLORS.primary,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+      }}>
+        <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Investing Safety</Text>
+        <Text style={{ marginTop: SIZES.base, color: COLORS.white, ...FONTS.body4, lineHeight: 18 }}>It's very difficultto time a investment, especially when the market is valatile. Learn how to use dollar cost averaging to your advance.</Text>
+        <TouchableOpacity style={{ marginTop: SIZES.base }}
+          onPress={() => { }}>
+          <Text style={{ textDecorationLine: 'underline', ...FONTS.body5, color: COLORS.green }}>Learn more...</Text>
+        </TouchableOpacity>
+      </View>
+    );
   }
 
-  render() {
+  renderAlert() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
-        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
-        <View style={styles.contenedorTitulo}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image
-              source={icons.home}
-              resizeMode='contain'
-              style={{ width: 24, height: 24, tintColor: COLORS.black }} />
-            <Text style={{ ...FONTS.h3, marginLeft: 5 }}>
-              Inicio
-            </Text>
-          </View>
-          <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <TouchableOpacity onPress={() => { this.onEventReload() }}>
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 10,
+          marginHorizontal: SIZES.padding,
+          paddingVertical: SIZES.padding,
+          paddingHorizontal: SIZES.radius,
+          backgroundColor: COLORS.white,
+          borderRadius: SIZES.radius,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+        }}
+      >
+        <Image
+          source={icons.camera}
+          style={{
+            width: 24,
+            height: 24,
+            tintColor: COLORS.primary
+          }}
+        />
+        <View style={{ flex: 1, marginLeft: SIZES.radius }}>
+          <Text style={{ ...FONTS.h4 }}>Set Price Alert</Text>
+          <Text style={{ ...FONTS.body5 }}>Get notifed when your</Text>
+        </View>
+
+        <Image
+          source={icons.back}
+          style={{
+            width: 25,
+            height: 25,
+            tintColor: COLORS.gray
+          }}
+        />
+      </TouchableOpacity>
+    );
+  }
+
+  renderHeader() {
+    return (
+      <View style={{
+        width: '100%',
+        backgroundColor: COLORS.lightGray,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+      }}>
+        <ImageBackground
+          source={images.fondo}
+          resizeMode='cover'
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            paddingVertical: 20
+          }}>
+
+          {/* Header bar */}
+          <View
+            style={{
+              paddingHorizontal: 20,
+              paddingVertical: 5,
+              width: '100%',
+              alignItems: 'flex-end',
+              paddingHorizontal: SIZES.padding
+            }}>
+            <TouchableOpacity
+              style={{
+                width: 24,
+                height: 24,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onPress={this.onEventCloseSession} >
               <Image
-                source={icons.reload}
-                resizeMode='contain'
-                style={{ width: 24, height: 24, tintColor: COLORS.blue }} />
+                source={icons.turnoff} resizeMode='contain'
+                style={{ flex: 1, tintColor: COLORS.white }}
+              />
             </TouchableOpacity>
           </View>
+          {/*  */}
+
+          {/* Information */}
+          <View style={{ alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, paddingVertical: 5 }}>
+            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>N° CIP : {this.state.cip}</Text>
+            <Text style={{ marginTop: SIZES.base, color: COLORS.white, ...FONTS.h1, textAlign: 'center' }}>Ing. {this.state.apellidos + ", " + this.state.nombres}</Text>
+            <Text style={{ color: COLORS.white, ...FONTS.body4 }}>Su Condición : {this.state.condicion}</Text>
+            <Text style={{ color: COLORS.white, ...FONTS.body5 }}>{this.state.cumplirTreinta <= 0 ? '30 años cumplidos' : (this.state.cumplirTreinta + ' años para ser Vitalicio')}</Text>
+          </View>
+          {/*  */}
+
+
+        </ImageBackground>
+      </View>
+    );
+  }
+
+  renderBoxes() {
+    return (
+      <View style={{ paddingHorizontal: 20, marginTop: SIZES.padding }}>
+
+        <View style={styles.box}>
+          <View style={styles.boxBody}>
+            <View style={{ flexDirection: 'row', marginBottom: 5, alignItems: 'center' }}>
+              <Text style={styles.boxTitle}>Su Estado</Text>
+              <Image source={this.state.habilidad == 1 ? icons.ok : icons.warning} style={styles.boxImage} />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.boxSubTitle}>{this.state.habilidad == 1 ? "HABILITADO" : "NO HABILITADO"}</Text>
+            </View>
+          </View>
+
+          <View style={styles.boxBody}>
+            <View style={{ flexDirection: 'row', marginBottom: 5, alignItems: 'center' }}>
+              <Text style={styles.boxTitle}>Su Deuda</Text>
+              <Image source={icons.moneyBag} style={styles.boxImage} />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.boxSubTitle}>S/ {formatMoney(this.state.deuda)}</Text>
+            </View>
+          </View>
         </View>
+
+
+        <View style={styles.box}>
+          <View style={styles.boxBody}>
+            <View style={{ flexDirection: 'row', marginBottom: 5, alignItems: 'center' }}>
+              <Text style={styles.boxTitle}>Ult. Cuota</Text>
+              <Image source={icons.calendar} style={styles.boxImage} />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.boxSubTitle}>{getDateFormaMMYY(this.state.ultimaCuota)}</Text>
+            </View>
+          </View>
+
+          <View style={styles.boxBody}>
+            <View style={{ flexDirection: 'row', marginBottom: 5, alignItems: 'center' }}>
+              <Text style={styles.boxTitle}>Hábil Hasta</Text>
+              <Image source={icons.calendar} style={styles.boxImage} />
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.boxSubTitle}>{getDateFormaMMYY(this.state.habilidadHasta)}</Text>
+            </View>
+          </View>
+        </View>
+      </View >
+    );
+  }
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    this.setState({ refreshing: false });
+    this.loadInformacion();
+  }
+  render() {
+    return (
+
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
+        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+
         {
           !this.state.isLoading ?
             (
@@ -171,166 +307,20 @@ class Home extends React.Component {
                 }
               </View>
             )
-            : this.state.estado == 1 ?
+            :
+            this.state.estado == 1 ?
               (
-                <ScrollView showsVerticalScrollIndicator={false}>
-                  {/* START DATOS DEL INGENIERO */}
-                  <View style={styles.container}>
-
-                    <View style={{ marginVertical: 5, paddingHorizontal: 20, flexDirection: 'row' }}>
-                      <View>
-                        <Text style={{ ...FONTS.h2 }}>N° CIP : {this.state.cip}</Text>
-                        <Text style={{ ...FONTS.h2 }}>Ing. {this.state.apellidos + ", " + this.state.nombres}</Text>
-                      </View>
-                    </View>
-
-                    {/* <View style={{ paddingHorizontal: 20, flexDirection: 'row' }}>
-                      <Text style={{ ...FONTS.h3, color: COLORS.gray, }}>{this.state.capitulo + " - " + this.state.especialidad}</Text>
-                    </View> */}
-
-                    <View style={{ marginVertical: 5, paddingHorizontal: 20 }}>
-                      <Text style={{ ...FONTS.h4, }}>Su Condición : {this.state.condicion}</Text>
-                      <Text style={{ ...FONTS.h4, color: COLORS.gray, }}>{this.state.cumplirTreinta <= 0 ? '30 años cumplidos' : (this.state.cumplirTreinta + ' años para ser Vitalicio')} </Text>
-                    </View>
-
-                    {/* END DATOS DEL INGENIERO */}
-
-                    {/*  START DETALLE DE SUS PAGOS*/}
-                    <View style={{ paddingHorizontal: 20, marginVertical: 5 }}>
-
-                      <View style={styles.box}>
-                        <View style={styles.boxBody}>
-                          <View style={{ flexDirection: 'row' }}>
-                            <Text style={styles.boxTitle}>Su Estado</Text>
-                          </View>
-                          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image source={this.state.habilidad == 1 ? icons.ok : icons.warning} style={styles.boxImage} />
-                            <Text style={styles.boxSubTitle}>{this.state.habilidad == 1 ? "HABILITADO" : "NO HABILITADO"}</Text>
-                          </View>
-                        </View>
-
-                        <View style={styles.boxBody}>
-                          <View style={{ flexDirection: 'row' }}>
-                            <Text style={styles.boxTitle}>Su Deuda</Text>
-                          </View>
-                          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image source={icons.moneyBag} style={styles.boxImage} />
-                            <Text style={styles.boxSubTitle}>S/ {formatMoney(this.state.deuda)}</Text>
-                          </View>
-                        </View>
-                      </View>
-
-
-                      <View style={styles.box}>
-                        <View style={styles.boxBody}>
-                          <View style={{ flexDirection: 'row', }}>
-                            <Text style={styles.boxTitle}>Ultima Cuota</Text>
-                          </View>
-                          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image source={icons.calendar} style={styles.boxImage} />
-                            <Text style={styles.boxSubTitle}>{this.state.ultimaCuota}</Text>
-                          </View>
-                        </View>
-
-                        <View style={styles.boxBody}>
-                          <View style={{ flexDirection: 'row' }}>
-                            <Text style={styles.boxTitle}>Habilitado Hasta</Text>
-                          </View>
-                          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image source={icons.calendar} style={styles.boxImage} />
-                            <Text style={styles.boxSubTitle}>{this.state.habilidadHasta}</Text>
-                          </View>
-                        </View>
-                      </View>
-
-                    </View>
-                    {/* END DETALLE DE SUS PAGOS */}
-
-                    {/* START */}
-
-                    <View style={{ backgroundColor: '#BABABA', paddingHorizontal: 20, paddingTop: 10, paddingBottom: 30, borderBottomLeftRadius:25, borderBottomRightRadius:25 }}>
-                      <View style={{ marginBottom: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Eventos</Text>
-                        <TouchableOpacity>
-                          <Text style={{ ...FONTS.h3, color: COLORS.white, textDecorationLine: 'underline' }}>Ver Todo</Text>
-                        </TouchableOpacity>
-                      </View>
-                      <ScrollView horizontal>
-                        {
-                          this.state.eventos.map((item, index) => (
-                            <View key={index} style={{ marginRight: 10 }}>
-                              <Image style={{ width: 80, height: 120 }} source={item.img} />
-                            </View>
-                          ))
-                        }
-                      </ScrollView>
-                    </View>
-
-                    {/* END */}
-
-                    {/* REVISTAS */}
-                    <View style={{ height: SIZES.height * 0.70, backgroundColor: COLORS.lightGray }}>
-                    <View style={{ flex: 1,  borderBottomLeftRadius: 30, borderBottomRightRadius: 30,  backgroundColor: COLORS.white, paddingBottom: 40,}}>
-                      <View style={{ marginTop: SIZES.font, marginHorizontal: SIZES.padding }}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <Text style={{ color: COLORS.secondary, ...FONTS.h2 }}>Revistas</Text>
-                          <TouchableOpacity style={{}} onPress={() => { }}>
-                            <Text style={{ color: COLORS.secondary, ...FONTS.body3 }}>Ver Todo</Text>
-                          </TouchableOpacity>
-                        </View>
-                        <View style={{ flexDirection: 'row', height: '88%', marginTop: SIZES.base }}>
-                          <View style={{ flex: 1 }}>
-                            <TouchableOpacity style={{ flex: 1 }}>
-                              <Image source={images.revista1} resizeMode='cover' style={{  width: "100%", height: "100%", borderRadius: 20}} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{ flex: 1, marginTop: SIZES.font }}>
-                              <Image source={images.revista2} resizeMode='cover' style={{ width: "100%", height: "100%", borderRadius: 20 }} />
-                            </TouchableOpacity>
-                          </View>
-                          <View style={{ flex: 1.3 }}>
-                            <TouchableOpacity style={{ flex: 1, marginLeft: SIZES.font }}>
-                              <Image source={images.revista3} resizeMode='cover' style={{ width: '100%', height: '100%', borderRadius: 20 }}/>
-                            </TouchableOpacity>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                    {/*eND REVISTAS */}
-
-                    {/* START */}
-                    <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-                      <View style={{ marginBottom: 5 }}>
-                        <Text style={{ color: COLORS.grayDark, ...FONTS.h2 }}>Bolsa de Trabajo</Text>
-                      </View>
-                      {/*  */}
-                      <View style={{ borderColor: "#DBDBDB", borderWidth: 1, backgroundColor: COLORS.white, marginBottom: 10 }}>
-                        <View style={{ padding: 10 }}>
-                          <View style={{ marginBottom: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Empresa constructora PECONASA </Text>
-                          </View>
-                          <View style={{ flexDirection: 'row' }}>
-                            <View style={{ width: '80%' }}>
-                              <Text style={{ ...FONTS.P, color: COLORS.secondary }}>Puesto: Especialista varios</Text>
-                              <Text style={{ ...FONTS.P, color: COLORS.secondary }}>Ciudad: Piura</Text>
-                              <Text style={{ ...FONTS.P, color: COLORS.secondary }}>Vigente hasta: 05/20/2021</Text>
-                            </View>
-                            <View style={{ width: '20%' }}>
-                              <Image style={{ width: 64, height: 64 }} source={icons.briefcase} />
-                            </View>
-                          </View>
-                          <View>
-                            <TouchableOpacity>
-                              <Text style={{ ...FONTS.h3, color: COLORS.primary, textDecorationLine: 'underline' }}>Ver requisitos</Text>
-                            </TouchableOpacity>
-                          </View>
-                        </View>
-                      </View>
-                      {/*  */}
-                    </View>
-
-                    {/* END */}
+                <ScrollView refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={() => this.onRefresh()}
+                  />
+                }>
+                  <View style={{ flex: 1, paddingBottom: 20 }}>
+                    {this.renderHeader()}
+                    {this.renderBoxes()}
+                    {this.renderAlert()}
+                    {this.renderNotice()}
                   </View>
                 </ScrollView>
               )
@@ -352,6 +342,7 @@ class Home extends React.Component {
                 </View>
               )
         }
+
       </SafeAreaView >
     );
   }
@@ -374,33 +365,36 @@ const styles = StyleSheet.create({
   box: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: 10,
+    marginBottom: 20,
     justifyContent: 'space-between',
   },
   boxBody: {
     width: '48%',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: COLORS.white,
-    borderWidth: 1,
-    borderColor: '#DBDBDB',
-    shadowOffset: { width: -1, height: 3, },
-    shadowOpacity: 0.51,
-    shadowRadius: 10,
-    elevation: 1,
-    borderRadius:10
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.white, shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   boxImage: {
     width: 26,
     height: 26,
-    marginRight: 5
+    marginHorizontal: 5
   },
   boxTitle: {
-    ...FONTS.italicBold
+    ...FONTS.body5,
+    color: COLORS.grayDark
   },
   boxSubTitle: {
-    ...FONTS.italic,
-    color: COLORS.grayDark,
+    ...FONTS.h4,
+    color: COLORS.secondary,
+    textDecorationLine: 'underline'
   }
 });
 
@@ -410,4 +404,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeToken: () => dispatch(signOut())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

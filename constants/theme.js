@@ -21,14 +21,15 @@ export const SIZES = {
   base: 8,
   font: 14,
   radius: 12,
-  padding: 24,
+  padding: 20,
 
   // font sizes
   largeTitle: 50,
-  h1: 27,
+  h1: 21,
   h2: 19,
   h3: 17,
   h4: 15,
+  h5: 13,
   // app dimensions
   width,
   height,
@@ -43,7 +44,8 @@ export const FONTS = {
   h2: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 26 },
   h3: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h3, lineHeight: 22 },
   h4: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 22 },
-  p: { fontFamily: 'Roboto-Regular', fontSize: SIZES.h4, lineHeight: 22 },
+  h5: { fontFamily: 'Roboto-Bold', fontSize: SIZES.h5, lineHeight: 20 },
+  p: { fontFamily: 'Roboto-Regular', fontSize: SIZES.h5, lineHeight: 20 },
   italic: { fontFamily: 'Roboto-Italic', fontSize: SIZES.h4, lineHeight: 22 },
   italicBold: { fontFamily: 'Roboto-BoldItalic', fontSize: SIZES.h4, lineHeight: 22 },
   body1: {
@@ -65,6 +67,11 @@ export const FONTS = {
     fontFamily: 'Roboto-Regular',
     fontSize: SIZES.h4,
     lineHeight: 22,
+  },
+  body5: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: SIZES.h5,
+    lineHeight: 20,
   },
   text_splash: {
     fontFamily: 'Roboto-Black',

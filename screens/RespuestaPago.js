@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity,BackHandler ,Platform } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity, BackHandler, Platform } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, URL } from '../constants';
-import { getDateFormaMMYY } from "./tools/Tools";
 import { connect } from 'react-redux';
 
 class RespuestaPago extends React.Component {
@@ -29,9 +28,9 @@ class RespuestaPago extends React.Component {
     }
 
     componentDidMount() {
-        if(Platform.OS !== 'ios'){
+        if (Platform.OS !== 'ios') {
             BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
-        }      
+        }
     }
 
     handleBackButton = () => {
@@ -43,24 +42,35 @@ class RespuestaPago extends React.Component {
         this.props.navigation.navigate('Servicios');
     }
 
-    render() { 
-        let {estado,message,monto} = this.props.route.params;
+    render() {
+        // let estado = 0, message = "Error en procesar el pago, intente nuevamente en un par de minutos.", monto = 0;
+        let { estado, message, monto } = this.props.route.params;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
                 <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
 
                 <ScrollView>
                     <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10,marginBottom:10,flexDirection:'row',alignItems: 'center'}}>
-                            <Image
-                            source={estado == 1 ? icons.ok : icons.error}
-                            resizeMode='contain'
-                            style={{ width: 36, height: 36, marginRight: 10 }} />
-                            <Text style={{ ...FONTS.h3, color: COLORS.secondary }}>{message}</Text>
+                        <View style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            borderColor: '#D6D5D5',
+                            borderWidth: 1,
+                            backgroundColor: COLORS.white,
+                        }}>
+                            <View style={{ width: '20%', alignItems: 'center' }}>
+                                <Image
+                                    source={estado == 1 ? icons.ok : icons.error}
+                                    resizeMode='contain'
+                                    style={{ width: 36, height: 36, margin: 10 }} />
+                            </View>
+                            <View style={{ width: '80%', padding: 10 }}>
+                                <Text >{message}</Text>
+                            </View>
                         </View>
-                        
-                        <View style={{ borderColor: COLORS.gray, borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
-                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>MONTO</Text>
+
+                        <View style={{ borderColor: '#D6D5D5', borderWidth: 1, backgroundColor: COLORS.white, padding: 10 }}>
+                            <Text style={{ ...FONTS.h4, color: "#AAAAAA" }}>MONTO</Text>
                             <Text style={{ ...FONTS.h2, color: COLORS.green }}>S/ {monto}</Text>
                         </View>
 
@@ -69,9 +79,10 @@ class RespuestaPago extends React.Component {
                                 style={{
                                     flexDirection: 'row',
                                     backgroundColor: COLORS.primary,
-                                    alignItems: 'center', 
-                                    paddingHorizontal: 13, 
-                                    paddingVertical: 8
+                                    alignItems: 'center',
+                                    paddingHorizontal: 10,
+                                    paddingVertical: 5,
+                                    borderRadius: 10
                                 }}
                                 onPress={this.onEventVolver}>
                                 <Image
@@ -121,5 +132,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(RespuestaPago);
+// export default RespuestaPago;
 
 

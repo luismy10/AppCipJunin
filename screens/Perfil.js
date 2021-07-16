@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, images, URL } from '../constants';
+import SecureStorage from 'react-native-secure-storage';
 import { connect } from 'react-redux';
+import { signOut } from '../screens/actions/persona';
+import HeaderTab from './components/HeaderTab';
 
 class Perfil extends React.Component {
 
@@ -30,6 +33,14 @@ class Perfil extends React.Component {
     }
   }
 
+  onEventCloseSession = async () => {
+    try {
+      await SecureStorage.removeItem('user');
+      this.props.removeToken();
+    } catch (e) {
+      this.props.removeToken();
+    }
+  }
 
   async componentDidMount() {
     this.loadInformacion();
@@ -73,7 +84,7 @@ class Perfil extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
-        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+        <HeaderTab onEventCloseSession={this.onEventCloseSession} />
 
         <View style={styles.contenedorTitulo}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -129,80 +140,97 @@ class Perfil extends React.Component {
                     </View>
                   </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>N° CIP:</Text>
+                  <View style={{ paddingHorizontal: SIZES.padding }}>
+                    <View style={{
+                      padding: SIZES.padding,
+                      backgroundColor: COLORS.white,
+                      borderRadius: SIZES.radius,
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 2,
+                      },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 3.84,
+                      elevation: 5,
+                    }}>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>N° CIP:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.cip}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.cip}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>Condición:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>Condición:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.condicion}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.condicion}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>DNI:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>DNI:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.dni}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.dni}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>Apellidos:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>Apellidos:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.apellidos}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.apellidos}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>Nombres:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>Nombres:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.nombres}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.nombres}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>Fecha de Nacimiento:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>Fecha de Nacimiento:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.fechaNacimiento}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.fechaNacimiento}</Text>
-                      </View>
-                    </View>
-                  </View>
 
-                  <View style={styles.itemContenedor}>
-                    <View style={styles.itemDetalle}>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.black }}>Sexo:</Text>
+                      <View style={styles.itemContenedor}>
+                        <View style={styles.itemDetalle}>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.grayDark }}>Sexo:</Text>
+                          </View>
+                          <View style={styles.itemText}>
+                            <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.sexo}</Text>
+                          </View>
+                        </View>
                       </View>
-                      <View style={styles.itemText}>
-                        <Text style={{ ...FONTS.h4, color: COLORS.secondary, }}>{this.state.sexo}</Text>
-                      </View>
+
                     </View>
                   </View>
 
@@ -245,33 +273,15 @@ const styles = StyleSheet.create({
   itemContenedor: {
     width: '100%',
     flexDirection: 'column',
-    paddingHorizontal: 20,
-    paddingVertical: 5,
+    marginBottom: 10
   },
   itemDetalle: {
     width: '100%',
-    borderWidth: 1,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    backgroundColor: COLORS.white,
-    borderWidth: 1,
-    borderColor: '#DBDBDB',
-    shadowColor: "#000",
-    shadowOffset: { width: -1, height: 3, },
-    shadowOpacity: 0.51,
-    shadowRadius: 10,
-    elevation: 1
   },
   itemText: {
 
 
   },
-  itemIcon: {
-    tintColor: COLORS.secondary,
-    marginHorizontal: 5,
-    width: 18,
-    height: 18
-  }
 });
 
 const mapStateToProps = (state) => {
@@ -280,5 +290,12 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeToken: () => dispatch(signOut())
+  }
+}
 
-export default connect(mapStateToProps)(Perfil);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Perfil);

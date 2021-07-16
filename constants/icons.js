@@ -1,9 +1,6 @@
 export const camera = require("../assets/icons/camera.png");
 export const cube = require("../assets/icons/cube_icon.png");
 export const flash = require("../assets/icons/flash_icon.png");
-export const heart = require("../assets/icons/heart_icon.png");
-export const heartGreenOutline = require("../assets/icons/heart_green_outline.png");
-export const heartRed = require("../assets/icons/heart_red.png");
 export const search = require("../assets/icons/search_icon.png");
 export const focus = require("../assets/icons/focus.png");
 export const plus = require("../assets/icons/plus.png");
@@ -47,14 +44,12 @@ export const certHabilidad = require("../assets/icons/certhabilidad.png");
 export const certObra = require("../assets/icons/certObra.png");
 export const certProyecto = require("../assets/icons/certproyecto.png");
 export const pagos = require("../assets/icons/pagos.png");
+export const notification = require("../assets/icons/notification.png");
 
 export default {
     camera,
     cube,
     flash,
-    heart,
-    heartGreenOutline,
-    heartRed,
     search,
     focus,
     plus,
@@ -97,5 +92,6 @@ export default {
     certHabilidad,
     certObra,
     certProyecto,
-    pagos
+    pagos,
+    notification
 }

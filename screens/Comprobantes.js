@@ -1,13 +1,32 @@
 import React from 'react';
 import { StyleSheet, View, Text, StatusBar, ScrollView, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { COLORS, SIZES, icons, FONTS, images } from '../constants';
+import SecureStorage from 'react-native-secure-storage';
+import { connect } from 'react-redux';
+import { signOut } from '../screens/actions/persona';
+import HeaderTab from './components/HeaderTab';
 
 class Comprobantes extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+  }
+
+  onEventCloseSession = async () => {
+    try {
+      await SecureStorage.removeItem('user');
+      this.props.removeToken();
+    } catch (e) {
+      this.props.removeToken();
+    }
+  }
 
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightGray }}>
-        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+        {/* <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} /> */}
+        <HeaderTab onEventCloseSession={this.onEventCloseSession} />
 
         <View style={styles.contenedorTitulo}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -23,41 +42,33 @@ class Comprobantes extends React.Component {
 
         <View style={styles.container}>
 
-          <View style={styles.box1}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('EstadoCuenta')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.cuenta} style={styles.icon1} />
-                <Text style={{ ...FONTS.h4, color: COLORS.white }}>Est. Cuentas</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.box1} onPress={() => this.props.navigation.navigate('EstadoCuenta')}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={icons.cuenta} style={styles.icon1} />
+              <Text style={{ ...FONTS.h4, color: COLORS.white }}>Est. Cuentas</Text>
+            </View>
+          </TouchableOpacity>
 
-          <View style={styles.box}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>                
-                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Habilidad</Text>
-                <Image source={icons.certHabilidad} style={styles.icon} />
-              </View>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('')}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Habilidad</Text>
+              <Image source={icons.certHabilidad} style={styles.icon} />
+            </View>
+          </TouchableOpacity>
 
-          <View style={styles.box1}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={icons.certObra} style={styles.icon1} />
-                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Obra</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.box1} onPress={() => this.props.navigation.navigate('')}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={icons.certObra} style={styles.icon1} />
+              <Text style={{ ...FONTS.h4, color: COLORS.white }}>Cert. Obra</Text>
+            </View>
+          </TouchableOpacity>
 
-          <View style={styles.box}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>                
-                <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Proyecto</Text>
-                <Image source={icons.certProyecto} style={styles.icon} />
-              </View>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate('')}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ ...FONTS.h4, color: COLORS.secondary }}>Cert. Proyecto</Text>
+              <Image source={icons.certProyecto} style={styles.icon} />
+            </View>
+          </TouchableOpacity>
 
         </View>
 
@@ -85,20 +96,23 @@ const styles = StyleSheet.create({
   },
   box1: {
     minWidth: '70%',
-    backgroundColor: "#F06B5C",
+    backgroundColor: COLORS.green,
     paddingHorizontal: 30,
     paddingVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: "#F04734",
+    borderColor: COLORS.green,
     borderWidth: 1,
-    shadowColor: "#000",
-    shadowOffset: { width: -1, height: 5, },
-    shadowOpacity: 0.71,
-    shadowRadius: 10,
-    elevation: 5,
     marginBottom: 20,
-    borderRadius:25,
+    borderRadius: SIZES.radius,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   box: {
     minWidth: '70%',
@@ -107,15 +121,16 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: COLORS.gray,
-    borderWidth: 1,
-    shadowColor: "#000",
-    shadowOffset: { width: -1, height: 5, },
-    shadowOpacity: 0.71,
-    shadowRadius: 10,
-    elevation: 5,
     marginBottom: 20,
-    borderRadius:25,
+    borderRadius: SIZES.radius,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   icon1: {
     width: 20,
@@ -129,9 +144,22 @@ const styles = StyleSheet.create({
     height: 20,
     resizeMode: 'stretch',
     marginLeft: 50,
-    tintColor: COLORS.primary
+    tintColor: COLORS.secondary
   }
 });
 
-export default Comprobantes;
+const mapStateToProps = (state) => {
+  return {
+    token: state.personaReducer
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeToken: () => dispatch(signOut())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comprobantes);
 
